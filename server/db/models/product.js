@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(moduls) {
       const { CartItem, Like, Review, PhotoProduct, Category } = moduls;
-      console.log(moduls);
       this.hasMany(CartItem, { foreignKey: 'productId' });
       this.hasMany(Like, { foreignKey: 'productId' });
       this.hasMany(Review, { foreignKey: 'productId' });
