@@ -70,7 +70,7 @@ router.post("/authentication", async (req, res) => {
             httpOnly: true,
           })
           .status(200)
-          .json({ message: "ok" });
+          .json({ user, message: "ok" });
       } else {
         res
           .status(400)
@@ -90,6 +90,13 @@ router.get("/logout", (req, res) => {
     res.sendStatus(204);
   } catch (error) {
     res.status(500).json({ message: error.message });
+  }
+});
+router.get("/check", (req, res) => {
+  if (res.locals.user) {
+    res.json({ message: "success", user: res.locals.user });
+  } else {
+    res.status(401).json({ message: "Пользователь не аутентифицирован" });
   }
 });
 module.exports = router;

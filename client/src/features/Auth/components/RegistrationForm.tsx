@@ -38,12 +38,12 @@ function RegistrationForm(): JSX.Element {
   });
 
   const onSubmit: SubmitHandler<Registration> = (data) => {
-   void dispatch(registration(data));
+    void dispatch(registration(data));
   };
 
   useEffect(() => {
     if (user) {
-      navigate('/');
+      navigate('/login');
     }
   }, [user]);
 

@@ -2,23 +2,29 @@ import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Registration from '../features/Auth/components/RegistrationForm';
 import Login from '../features/Auth/components/LoginForm';
-import MainPage from '../features/MainPage/MainPage';
-import CategoryList from '../features/CategoryList/components/CategoryList';
+import Layout from './Layout';
 import { useAppDispatch } from '../store/store';
-import { initCategory } from '../features/CategoryList/categorySlice';
+import { check } from '../features/Auth/authSlice';
+        import MainPage from '../features/MainPage/MainPage';
+        import { initCategory } from '../features/CategoryList/categorySlice';
 
 function App(): JSX.Element {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    void dispatch(check());
+  }, []);
   useEffect(()=>{
 dispatch(initCategory())
   },[])
   return (
     <div className="App">
       <Routes>
-        <Route path="/registration" element={<Registration />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<MainPage />} />
-        {/* <Route path='/' element={<CategoryList/>}/> */}
+        <Route element={<Layout />}>
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<MainPage />} />
+        </Route>
+
       </Routes>
     </div>
   );
