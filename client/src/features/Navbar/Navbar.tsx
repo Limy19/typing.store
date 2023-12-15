@@ -17,20 +17,19 @@ function Navbar(): JSX.Element {
       <Link className="underline" to="/">
         Клавиатура
       </Link>
-      {user && (
+      {user ? (
         <>
           <div className="underline decoration-wavy">привет, {user.name}!</div>
           <button type="button" onClick={onClick}>
             Выйти
           </button>
         </>
+      ) : (
+        <>
+          <Link to="registration">Регистрация</Link>
+          <Link to="Login">Войти</Link>
+        </>
       )}
-      {/* //   ) : (
-    //     <>
-    //       <Link to="registration">Регистрация</Link>
-    //       <Link to="Login">Войти</Link>
-    //     </>
-    //   )} */}
     </div>
   );
 }
