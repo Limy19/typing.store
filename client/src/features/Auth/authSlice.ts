@@ -14,6 +14,7 @@ export const authentication = createAsyncThunk('auth/authentication', (obj: Auth
   api.authenticationFetch(obj),
 );
 export const logout = createAsyncThunk('auth/logout', () => api.logoutFetch());
+export const check = createAsyncThunk('auth/check', () => api.ckeckFetch());
 
 const authSlice = createSlice({
   name: 'auth',
@@ -30,6 +31,9 @@ const authSlice = createSlice({
       })
       .addCase(authentication.fulfilled, (state, action) => {
         state.user = action.payload;
+        console.log(state.user);
+
+        console.log(action);
       })
       .addCase(authentication.rejected, (state, action) => {
         state.error = action.error.message;
@@ -38,6 +42,12 @@ const authSlice = createSlice({
         state.user = undefined;
       })
       .addCase(logout.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(check.fulfilled, (state, action) => {
+        state.user = action.payload;
+      })
+      .addCase(check.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

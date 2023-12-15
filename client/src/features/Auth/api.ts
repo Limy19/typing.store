@@ -25,7 +25,7 @@ export const authenticationFetch = async (obj: Authentication): Promise<User> =>
     throw message;
   }
   const data = await res.json();
-  return data;
+  return data.user;
 };
 
 export const logoutFetch = async (): Promise<void> => {
@@ -34,4 +34,14 @@ export const logoutFetch = async (): Promise<void> => {
     const { message } = await res.json();
     throw message;
   }
+};
+
+export const ckeckFetch = async (): Promise<User> => {
+  const res = await fetch('/api/auth/check');
+  if (!res.ok) {
+    const { message } = await res.json();
+    throw message;
+  }
+  const data = await res.json();
+  return data.user;
 };
