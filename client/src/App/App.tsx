@@ -28,9 +28,7 @@ function App(): JSX.Element {
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<MainPage />} />
-
           <Route path="/category/:categoryId" element={<CategoryPage />} />
-
           <Route path="/speedTest" element={<SpeedTest />} />
 
         </Route>
