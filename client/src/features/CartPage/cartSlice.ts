@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, createAction } from '@reduxjs/toolkit';
-import type { State, cartType } from './type/cartType';
+import type { State } from './type/cartType';
 import * as api from './api';
 
 const initialState: State = {

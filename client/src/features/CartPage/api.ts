@@ -1,3 +1,4 @@
+import CartItem from './components/CartItem';
 import type { CartItem } from './type/cartType';
 
 export const addFetch = async (productId: number): Promise<CartItem> => {
@@ -6,16 +7,15 @@ export const addFetch = async (productId: number): Promise<CartItem> => {
     headers: { 'Content-Type': 'Application/json' },
     body: JSON.stringify({ productId }),
   });
-  if (!res.ok) {
-    const { message } = await res.json();
+  const { message, cartItem } = await res.json();
+  if (!res.ok || !cartItem) {
     throw message;
   }
-  const data: { cartItem: CartItem } = await res.json();
-  return data.cartItem;
+  return cartItem;
 };
 
 export const deleteFetch = async (cartItemId: number): Promise<number> => {
-  const res = await fetch(`/api/cart/add/${cartItemId}`, {
+  const res = await fetch(`/api/cart/${cartItemId}`, {
     method: 'DELETE',
   });
   if (!res.ok) {

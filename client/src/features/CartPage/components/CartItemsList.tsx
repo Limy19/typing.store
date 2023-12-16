@@ -7,6 +7,8 @@ type CartItemsListProps = {
 };
 
 function CartItemsList({ cartItems }: CartItemsListProps): JSX.Element {
+  console.log(cartItems);
+
   return (
     <div>
       {cartItems.map((cartItem) => (

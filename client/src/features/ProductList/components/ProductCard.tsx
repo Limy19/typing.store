@@ -4,12 +4,15 @@ import { useAppDispatch, type RootState } from '../../../store/store';
 import type { Product } from '../type/productType';
 import { deleteProduct } from '../productSlice';
 import UppDateCard from './UppDateCard';
+import { add } from '../../CartPage/cartSlice';
 
 function ProductCard({ product }: { product: Product }): JSX.Element {
   const [state, setState] = useState(false);
   const user = useSelector((store: RootState) => store.auth.user);
   const dispatch = useAppDispatch();
-
+  const buy = (): void => {
+    void dispatch(add(product.id));
+  };
   const del = (): void => {
     void dispatch(deleteProduct(product.id));
   };
@@ -31,7 +34,9 @@ function ProductCard({ product }: { product: Product }): JSX.Element {
               <button type="button">изменить</button>
             </>
           ) : (
-            <button type="button">купить</button>
+            <button type="button" onClick={buy}>
+              купить
+            </button>
           )}
         </>
       )}
