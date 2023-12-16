@@ -7,9 +7,12 @@ function Text(): JSX.Element {
   const index = useSelector((store: RootState) => store.speedTest.index);
   return (
     <div>
-      {text.split('').map((c) => {
-        if (c === text[index]) {
-          return <b>{c}</b>;
+      {text.split('').map((c, i) => {
+        if (i === index) {
+          if (c === ' ') {
+            return <b key={i}>_</b>;
+          }
+          return <b key={i}>{c}</b>;
         }
         return c;
       })}
