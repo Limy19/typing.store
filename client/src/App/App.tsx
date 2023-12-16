@@ -5,18 +5,22 @@ import Login from '../features/Auth/components/LoginForm';
 import Layout from './Layout';
 import { useAppDispatch } from '../store/store';
 import { check } from '../features/Auth/authSlice';
+
         import MainPage from '../features/MainPage/MainPage';
         import { initCategory } from '../features/CategoryList/categorySlice';
 import CategoryPage from '../features/CategoryList/components/CategoryPage';
+
+import SpeedTest from '../features/speedTest/components/SpeedTest';
+
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
     void dispatch(check());
   }, []);
-  useEffect(()=>{
-dispatch(initCategory())
-  },[])
+  useEffect(() => {
+    dispatch(initCategory());
+  }, []);
   return (
     <div className="App">
       <Routes>
@@ -24,9 +28,12 @@ dispatch(initCategory())
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<MainPage />} />
-          <Route path="/category/:categoryId" element={<CategoryPage />} />
-        </Route>
 
+          <Route path="/category/:categoryId" element={<CategoryPage />} />
+
+          <Route path="/speedTest" element={<SpeedTest />} />
+
+        </Route>
       </Routes>
     </div>
   );
