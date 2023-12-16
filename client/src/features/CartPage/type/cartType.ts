@@ -1,11 +1,11 @@
-import { Product } from '../../CategoryList/type/categoryType';
+import type { Product } from '../../ProductList/type/productType';
 
 export type State = {
   cartItems: CartItem[];
 };
 
 export type CartItem = {
-  product: Product;
+  Product: Product;
   count: number;
   id: number;
 };

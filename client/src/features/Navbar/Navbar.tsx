@@ -8,7 +8,6 @@ function Navbar(): JSX.Element {
   const dispatch = useAppDispatch();
   const user = useSelector((store: RootState) => store.auth.user);
 
-
   const onClick = (): void => {
     void dispatch(logout());
   };
@@ -26,10 +25,11 @@ function Navbar(): JSX.Element {
         </>
       ) : (
         <>
-          <Link to="registration">Регистрация</Link>
-          <Link to="Login">Войти</Link>
+          <Link to="/registration">Регистрация</Link>
+          <Link to="/login">Войти</Link>
         </>
       )}
+      <Link to="/cart">Корзина</Link>
     </div>
   );
 }

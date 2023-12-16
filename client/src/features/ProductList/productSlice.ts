@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from './api';
 import type { IdProduct, ProductWithoutCategoryId, State } from './type/productType';
 import { IdCategory } from '../CategoryList/type/categoryType';
+import { add } from '../CartPage/cartSlice';
 
 const initialState: State = {
   products: [],
