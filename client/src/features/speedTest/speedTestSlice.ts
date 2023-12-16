@@ -29,6 +29,8 @@ const speedTestSlice = createSlice({
       })
       .addCase(tryChar, (state, action) => {
         const current = state.text[state.index];
+        console.log(current, action.payload);
+
         if (action.payload.toLocaleLowerCase() === current.toLocaleLowerCase()) {
           state.index++;
         }
