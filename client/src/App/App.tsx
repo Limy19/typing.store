@@ -6,12 +6,12 @@ import Layout from './Layout';
 import { useAppDispatch } from '../store/store';
 import { check } from '../features/Auth/authSlice';
 
-        import MainPage from '../features/MainPage/MainPage';
-        import { initCategory } from '../features/CategoryList/categorySlice';
+import MainPage from '../features/MainPage/MainPage';
+import { initCategory } from '../features/CategoryList/categorySlice';
 import CategoryPage from '../features/CategoryList/components/CategoryPage';
 
 import SpeedTest from '../features/speedTest/components/SpeedTest';
-
+import CartPage from '../features/CartPage/components/CartPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -28,11 +28,10 @@ function App(): JSX.Element {
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<MainPage />} />
-
+          <Route path="/cart" element={<CartPage />} />
           <Route path="/category/:categoryId" element={<CategoryPage />} />
 
           <Route path="/speedTest" element={<SpeedTest />} />
-
         </Route>
       </Routes>
     </div>
