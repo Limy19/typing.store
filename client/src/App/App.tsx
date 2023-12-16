@@ -7,6 +7,7 @@ import { useAppDispatch } from '../store/store';
 import { check } from '../features/Auth/authSlice';
         import MainPage from '../features/MainPage/MainPage';
         import { initCategory } from '../features/CategoryList/categorySlice';
+import CategoryPage from '../features/CategoryList/components/CategoryPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -23,6 +24,7 @@ dispatch(initCategory())
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<MainPage />} />
+          <Route path="/category/:categoryId" element={<CategoryPage />} />
         </Route>
 
       </Routes>
