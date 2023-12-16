@@ -37,9 +37,13 @@ form{
   justify-content: space-evenly;
   min-height: 500px;
 }
+/////
 .categoryCard{
 
 }
 .allCategory{
+  display: flex;
+}
+.productAll{
   display: flex;
 }
