@@ -3,12 +3,14 @@ import { useDispatch } from 'react-redux';
 import authSlice from '../features/Auth/authSlice';
 import categorySlice from '../features/CategoryList/categorySlice';
 import speedTestSlice from '../features/speedTest/speedTestSlice';
+import productSlice from '../features/ProductList/productSlice';
 
 const store = configureStore({
   reducer: {
     auth: authSlice,
     category: categorySlice,
     speedTest: speedTestSlice,
+    product:productSlice,
   },
 });
 

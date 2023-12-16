@@ -1,17 +1,17 @@
-const router = require("express").Router();
-const bcrypt = require("bcrypt");
-const { User } = require("../../db/models");
-const { generateTokens } = require("../../utils/authUtils");
-const cookiesConfig = require("../../config/cookiesConfig");
-const jwtConfig = require("../../config/jwtConfig");
+const router = require('express').Router();
+const bcrypt = require('bcrypt');
+const { User } = require('../../db/models');
+const { generateTokens } = require('../../utils/authUtils');
+const cookiesConfig = require('../../config/cookiesConfig');
+const jwtConfig = require('../../config/jwtConfig');
 
-router.post("/registration", async (req, res) => {
+router.post('/registration', async (req, res) => {
   try {
     const { name, email, password } = req.body;
     if (name && email && password) {
       let user = await User.findOne({ where: { email } });
       if (user) {
-        res.status(400).json({ message: "Такая почта уже зарегистрированна" });
+        res.status(400).json({ message: 'Такая почта уже зарегистрированна' });
       } else {
         const hash = await bcrypt.hash(password, 10);
         user = await User.create({
@@ -43,21 +43,26 @@ router.post("/registration", async (req, res) => {
           });
       }
     } else {
-      res.status(400).json({ message: "заполните все поля" });
+      res.status(400).json({ message: 'заполните все поля' });
     }
   } catch ({ message }) {
     res.status(500).json({ message });
   }
 });
 
-router.post("/authentication", async (req, res) => {
+router.post('/authentication', async (req, res) => {
   try {
     const { email, password } = req.body;
     if (email && password) {
       const user = await User.findOne({ where: { email } });
       if (user && (await bcrypt.compare(password, user.password))) {
         const { accessToken, refreshToken } = generateTokens({
-          user: { id: user.id, email: user.email, name: user.name },
+          user: {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            isAdmin: user.isAdmin,
+          },
         });
 
         res
@@ -70,21 +75,21 @@ router.post("/authentication", async (req, res) => {
             httpOnly: true,
           })
           .status(200)
-          .json({ user, message: "ok" });
+          .json({ user, message: 'ok' });
       } else {
         res
           .status(400)
-          .json({ message: "Ваша почта или пароль не соответствуют" });
+          .json({ message: 'Ваша почта или пароль не соответствуют' });
       }
     } else {
-      res.status(400).send("заполните все поля");
+      res.status(400).send('заполните все поля');
     }
   } catch (err) {
     console.log(err.message);
     res.status(500).json(err.message);
   }
 });
-router.get("/logout", (req, res) => {
+router.get('/logout', (req, res) => {
   try {
     res.clearCookie(jwtConfig.access.type).clearCookie(jwtConfig.refresh.type);
     res.sendStatus(204);
@@ -92,11 +97,11 @@ router.get("/logout", (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-router.get("/check", (req, res) => {
+router.get('/check', (req, res) => {
   if (res.locals.user) {
-    res.json({ message: "success", user: res.locals.user });
+    res.json({ message: 'success', user: res.locals.user });
   } else {
-    res.status(401).json({ message: "Пользователь не аутентифицирован" });
+    res.status(401).json({ message: 'Пользователь не аутентифицирован' });
   }
 });
 module.exports = router;
