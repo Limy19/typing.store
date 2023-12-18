@@ -17,6 +17,9 @@ function Navbar(): JSX.Element {
       <Link className="underline" to="/">
         Категории
       </Link>
+      <Link className="underline" to="/repair">
+        РемонтЪ
+      </Link>
       {user ? (
         <>
           <div className="underline decoration-wavy">привет, {user.name}!</div>
