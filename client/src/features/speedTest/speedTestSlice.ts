@@ -12,6 +12,7 @@ const initialState: State = {
 export const start = createAsyncThunk('speed/start', async () => Date.now());
 export const stop = createAsyncThunk('speed/stop', async () => Date.now());
 export const tryChar = createAction<string>('speed/tryChar');
+export const loadtext = createAsyncThunk('speed/textLoad', api.FetchRandomText);
 
 const speedTestSlice = createSlice({
   name: 'speedTest',
@@ -34,6 +35,9 @@ const speedTestSlice = createSlice({
         if (action.payload.toLocaleLowerCase() === current.toLocaleLowerCase()) {
           state.index++;
         }
+      })
+      .addCase(loadtext.fulfilled, (state, action) => {
+        state.text = action.payload;
       });
   },
 });
