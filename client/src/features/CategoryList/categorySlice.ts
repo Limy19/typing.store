@@ -10,9 +10,7 @@ const initialState: State = {
 };
 
 export const initCategory = createAsyncThunk('category/init', () => api.initCategoryFetch());
-export const initProduct = createAsyncThunk('product/init', (id: IdCategory) =>
-  api.initProductFetch(id),
-);
+
 
 const categorySlice = createSlice({
   name: 'categoryList',
@@ -21,17 +19,11 @@ const categorySlice = createSlice({
   extraReducers: (builder) => {
     builder
 
+      
       .addCase(initCategory.fulfilled, (state, action) => {
         state.categories = action.payload;
       })
       .addCase(initCategory.rejected, (state, action) => {
-        state.error = action.error.message;
-      })
-
-      .addCase(initProduct.fulfilled, (state, action) => {
-        state.products = action.payload;
-      })
-      .addCase(initProduct.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },
