@@ -23,7 +23,7 @@ router.post("/add", async (req, res) => {
   }
   const [cart, createdCart] = await Cart.findOrCreate({
     where: { userId: res.locals.user.id },
-    defaults: { userId: res.locals.user.id, status: false },
+    defaults: { userId: res.locals.user.id, status: "new" },
   });
   const cartId = cart?.id || createdCart?.id;
   let [cartItem, created] = await CartItem.findOrCreate({
@@ -45,6 +45,18 @@ router.delete("/:id", async (req, res) => {
   try {
     const cartItem = await CartItem.destroy({ where: { id } });
     res.json({ message: "success" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+router.post("/order", async (req, res) => {
+  try {
+    const cart = await Cart.findOne({
+      where: { userId: res.locals.user.id, status: "new" },
+    });
+    cart.status = "ordererd";
+    await cart.save();
+    res.json(cart);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

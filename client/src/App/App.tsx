@@ -11,20 +11,18 @@ import { initCategory } from '../features/CategoryList/categorySlice';
 import CategoryPage from '../features/CategoryList/components/CategoryPage';
 
 import SpeedTest from '../features/speedTest/components/SpeedTest';
+import Lk from '../features/lk/components/Lk';
 import CartPage from '../features/CartPage/components/CartPage';
 import ProductPage from '../features/ProductList/components/ProductPage';
 
 function App(): JSX.Element {
  
   const dispatch = useAppDispatch();
- 
+
   useEffect(() => {
     void dispatch(check());
     void dispatch(initCategory());
   }, []);
-
-
-  
 
   return (
     <div className="App">
@@ -37,6 +35,7 @@ function App(): JSX.Element {
           <Route path="/category/:categoryId" element={<CategoryPage />} />
           <Route path="/product/:productId" element={<ProductPage />} />
           <Route path="/speedTest" element={<SpeedTest />} />
+          <Route path="/lk" element={<Lk />} />
         </Route>
       </Routes>
     </div>
