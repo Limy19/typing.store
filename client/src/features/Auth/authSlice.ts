@@ -31,9 +31,9 @@ const authSlice = createSlice({
       })
       .addCase(authentication.fulfilled, (state, action) => {
         state.user = action.payload;
-        console.log(state.user);
+        // console.log(state.user);
 
-        console.log(action);
+        // console.log(action);
       })
       .addCase(authentication.rejected, (state, action) => {
         state.error = action.error.message;
@@ -46,7 +46,7 @@ const authSlice = createSlice({
       })
       .addCase(check.fulfilled, (state, action) => {
         state.user = action.payload;
-        console.log(action);
+        // console.log(action);
       })
       .addCase(check.rejected, (state, action) => {
         state.error = action.error.message;
