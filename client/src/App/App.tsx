@@ -14,6 +14,7 @@ import SpeedTest from '../features/speedTest/components/SpeedTest';
 import Lk from '../features/lk/components/Lk';
 import CartPage from '../features/CartPage/components/CartPage';
 import ProductPage from '../features/ProductList/components/ProductPage';
+import Repair from '../features/Repair/components/Repair';
 
 function App(): JSX.Element {
  
@@ -36,6 +37,7 @@ function App(): JSX.Element {
           <Route path="/product/:productId" element={<ProductPage />} />
           <Route path="/speedTest" element={<SpeedTest />} />
           <Route path="/lk" element={<Lk />} />
+          <Route path="/repair" element={<Repair />} />
         </Route>
       </Routes>
     </div>
