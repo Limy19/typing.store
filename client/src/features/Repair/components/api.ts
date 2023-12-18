@@ -1,4 +1,4 @@
-import type { Repair } from "./type/repairType";
+import type { Repair } from './type/repairType';
 
 export const repairFetch = async (obj: Repair): Promise<Repair> => {
   const res = await fetch('/api/repair', {

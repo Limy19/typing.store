@@ -54,7 +54,7 @@ function NavbarSideElement(): JSX.Element {
           flexGrow: 1,
         }}
       >
-        <Link className="NoTextDecoration" to="/">
+        <Link className="NoTextDecoration" to="/repair">
         услуги сервиса
         </Link>
       </Typography>
