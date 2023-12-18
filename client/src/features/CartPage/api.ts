@@ -1,4 +1,5 @@
-import CartItem from './components/CartItem';
+import { Cart } from './type/cartType';
+
 import type { CartItem } from './type/cartType';
 
 export const addFetch = async (productId: number): Promise<CartItem> => {
@@ -34,4 +35,17 @@ export const loadFetch = async (): Promise<CartItem[]> => {
   }
   const data: CartItem[] = await res.json();
   return data;
+};
+
+export const changeStatusFetch = async (): Promise<Cart> => {
+  const res = await fetch('/api/cart/order', {
+    method: 'POST',
+    headers: { 'Content-Type': 'Application/json' },
+    body: JSON.stringify({}),
+  });
+  const { message, cart } = await res.json();
+  if (!res.ok || !cart) {
+    throw message;
+  }
+  return cart;
 };

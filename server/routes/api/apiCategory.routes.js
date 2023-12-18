@@ -13,10 +13,18 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const products = await Product.findAll({
-      where: { categoryId: id },
-      include: { model: PhotoProduct },
-    });
+    let products;
+    if (id) {
+      products = await Product.findAll({
+        where: { categoryId: id },
+        include: { model: PhotoProduct },
+      });
+    } else {
+      products = await Product.findAll({
+        include: { model: PhotoProduct },
+      });
+    }
+
     res.status(200).json(products);
   } catch ({ message }) {
     res.status(500).json({ message });

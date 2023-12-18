@@ -14,8 +14,9 @@ function CategoryPage(): JSX.Element {
   const products = useSelector((store: RootState) => store.product.products);
 
   useEffect(() => {
-    void dispatch(initProduct(categoryId));
+   void dispatch(initProduct(categoryId));
   }, []);
+
 
   return (
     <div className="productAll">

@@ -8,4 +8,5 @@ export type CartItem = {
   Product: Product;
   count: number;
   id: number;
+  status: 'new' | 'ordered' | 'delivered';
 };

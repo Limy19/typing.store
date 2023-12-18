@@ -1,15 +1,14 @@
 const router = require('express').Router();
 const { Product, PhotoProduct } = require('../../db/models');
+const fileUpload = require('../../utils/fileupload');
 
 router.get('/:id', async (req, res) => {
   try {
-    console.log('lknjbuoiuh777777777887y87y887y8787y87y87y87');
     const product = await Product.findOne({
       where: { id: req.params.id },
       include: { model: PhotoProduct },
     });
-    const foto = await PhotoProduct.findAll();
-    console.log(product, '???////');
+
     res.status(200).json(product);
   } catch ({ message }) {
     res.status(500).json({ message });
@@ -33,6 +32,7 @@ router.delete('/:id', async (req, res) => {
       }
     }
   } catch ({ message }) {
+    console.log(message);
     res.status(500).json({ message });
   }
 });
@@ -44,6 +44,7 @@ router.put('/:id', async (req, res) => {
     if (description && name && stock && price) {
       const product = await Product.findOne({
         where: { id },
+        include: { model: PhotoProduct },
       });
       if (product) {
         product.description = description;
@@ -59,6 +60,7 @@ router.put('/:id', async (req, res) => {
       res.status(400).json({ message: 'Заполните все поля' });
     }
   } catch ({ message }) {
+    console.log(message);
     res.status(500).json({ message });
   }
 });
@@ -66,6 +68,9 @@ router.put('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const { categoryId, description, name, price, stock } = req.body;
+
+    const file = req.files?.img;
+    const arrImg = await Promise.all(file.map((el) => fileUpload(el)));
 
     if (description && name && price && stock && categoryId) {
       const product = await Product.create({
@@ -76,8 +81,18 @@ router.post('/', async (req, res) => {
         categoryId,
       });
 
+      await Promise.all(
+        arrImg.map((el) =>
+          PhotoProduct.create({
+            img: el,
+            productId: product.id,
+          })
+        )
+      );
+
       const newProduct = await Product.findOne({
         where: { id: product.id },
+        include: { model: PhotoProduct },
       });
 
       res.status(201).json(newProduct);

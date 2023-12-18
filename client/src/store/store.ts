@@ -7,17 +7,20 @@ import speedTestSlice from '../features/speedTest/speedTestSlice';
 import cartSlice from '../features/CartPage/cartSlice';
 
 import productSlice from '../features/ProductList/productSlice';
-
+import cardSlice from '../features/lk/cardSlice';
 
 const store = configureStore({
   reducer: {
     auth: authSlice,
     category: categorySlice,
     speedTest: speedTestSlice,
-
     cart: cartSlice,
 
-    product:productSlice,
+
+
+
+    card: cardSlice,
+    product: productSlice,
 
   },
 });

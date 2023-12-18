@@ -6,12 +6,16 @@ import { ShoppingBasket, KeyboardAltRounded } from '@mui/icons-material';
 import type { RootState } from '../../store/store';
 import { useAppDispatch } from '../../store/store';
 import { logout } from '../Auth/authSlice';
+
 import NavbarSideElement from './NavbarSideElement';
+
+import { useNavigate } from 'react-router-dom';
+
 
 function Navbar(): JSX.Element {
   const dispatch = useAppDispatch();
   const user = useSelector((store: RootState) => store.auth.user);
-
+  const navigate = useNavigate();
   const onClick = (): void => {
     void dispatch(logout());
   };
@@ -83,6 +87,7 @@ function Navbar(): JSX.Element {
         </IconButton>
       </Toolbar>
     </AppBar>
+
   );
 }
 
