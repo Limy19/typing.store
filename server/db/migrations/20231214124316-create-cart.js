@@ -18,7 +18,7 @@ module.exports = {
         },
       },
       status: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.ENUM("new", "ordererd", "delivered"),
         allowNull: false,
       },
       createdAt: {
