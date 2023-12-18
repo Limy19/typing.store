@@ -2,7 +2,10 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../../store/store';
 import Text from './Text';
-import { start, stop, tryChar } from '../speedTestSlice';
+import { loadtext, start, stop, tryChar } from '../speedTestSlice';
+import Keyboard from 'react-simple-keyboard';
+import 'react-simple-keyboard/build/css/index.css';
+import layout from 'simple-keyboard-layouts/build/layouts/russian';
 
 function SpeedTest(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -27,6 +30,9 @@ function SpeedTest(): JSX.Element {
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [timeFinish, timeStart]);
+  useEffect(() => {
+    void dispatch(loadtext());
+  }, []);
   return (
     <div>
       {!timeStart && (
@@ -38,9 +44,17 @@ function SpeedTest(): JSX.Element {
         <button type="button" onClick={() => void dispatch(stop())}>
           Закончить
         </button>
-      )}
+      )}{' '}
+      <button type="button" onClick={() => void dispatch(loadtext())}>
+        Сгенирировать новый текст
+      </button>
       <Text />
       {speed && <span>Символов в минуту : {speed}</span>}
+      <Keyboard
+        physicalKeyboardHighlightBgColor="#0ff"
+        physicalKeyboardHighlight={true}
+        {...layout}
+      />
     </div>
   );
 }

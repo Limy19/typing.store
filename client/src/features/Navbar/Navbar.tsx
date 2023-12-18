@@ -9,6 +9,7 @@ import { logout } from '../Auth/authSlice';
 
 import NavbarSideElement from './NavbarSideElement';
 
+
 function Navbar(): JSX.Element {
   const dispatch = useAppDispatch();
   const user = useSelector((store: RootState) => store.auth.user);
@@ -17,6 +18,7 @@ function Navbar(): JSX.Element {
     void dispatch(logout());
   };
   return (
+
     <div className="navbar">
       <div className="left">
         <span>
@@ -37,6 +39,7 @@ function Navbar(): JSX.Element {
             <button className="NODecorationButton" type="button" onClick={onClick}>
               LOGOUT
             </button>
+
           </span>
         </div>
       ) : (
@@ -54,6 +57,7 @@ function Navbar(): JSX.Element {
         </div>
       )}
     </div>
+
   );
 }
 
