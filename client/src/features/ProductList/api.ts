@@ -1,4 +1,4 @@
-import type { IdCategory } from '../CategoryList/type/categoryType';
+import { IdCategory } from '../CategoryList/type/categoryType';
 import type { IdProduct, Product, ProductWithoutCategoryId } from './type/productType';
 
 export const initProductFetch = async (id: IdCategory): Promise<Product[]> => {
@@ -32,5 +32,18 @@ export const updateProductFetch = async ({
       }),
     })
   ).json();
+  return data;
+};
+
+export const addProductFetch = async (obj: FormData): Promise<Product> => {
+  const res = await fetch('/api/product', {
+    method: 'POST',
+    body: obj,
+  });
+  if (!res.ok) {
+    const { message } = await res.json();
+    throw message;
+  }
+  const data: Product = await res.json();
   return data;
 };

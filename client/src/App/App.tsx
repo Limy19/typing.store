@@ -12,9 +12,13 @@ import CategoryPage from '../features/CategoryList/components/CategoryPage';
 
 import SpeedTest from '../features/speedTest/components/SpeedTest';
 import CartPage from '../features/CartPage/components/CartPage';
+import ProductPage from '../features/ProductList/components/ProductPage';
+import { initProduct } from '../features/ProductList/productSlice';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
+ 
+
   useEffect(() => {
     void dispatch(check());
   }, []);
@@ -28,11 +32,9 @@ function App(): JSX.Element {
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<MainPage />} />
-
-      <Route path="/cart" element={<CartPage />} />
-
-
+          <Route path="/cart" element={<CartPage />} />
           <Route path="/category/:categoryId" element={<CategoryPage />} />
+          <Route path="/product/:productId" element={<ProductPage />} />
           <Route path="/speedTest" element={<SpeedTest />} />
         </Route>
       </Routes>

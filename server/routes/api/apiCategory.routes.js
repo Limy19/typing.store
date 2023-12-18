@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Category, Product } = require('../../db/models');
+const { Category, Product, PhotoProduct } = require('../../db/models');
 
 router.get('/', async (req, res) => {
   try {
@@ -13,7 +13,10 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const products = await Product.findAll({ where: { categoryId: id } });
+    const products = await Product.findAll({
+      where: { categoryId: id },
+      include: { model: PhotoProduct },
+    });
     res.status(200).json(products);
   } catch ({ message }) {
     res.status(500).json({ message });

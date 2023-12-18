@@ -2,14 +2,12 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import * as api from './api';
 import type { IdProduct, ProductWithoutCategoryId, State } from './type/productType';
-import { IdCategory } from '../CategoryList/type/categoryType';
-import { add } from '../CartPage/cartSlice';
+import type{ IdCategory } from '../CategoryList/type/categoryType';
 
 const initialState: State = {
   products: [],
   error: undefined,
 };
-
 export const initProduct = createAsyncThunk('product/init', (id: IdCategory) =>
   api.initProductFetch(id),
 );
@@ -18,6 +16,9 @@ export const deleteProduct = createAsyncThunk('product/delete', (id: IdProduct) 
 );
 export const updateProduct = createAsyncThunk('product/update', (obj: ProductWithoutCategoryId) =>
   api.updateProductFetch(obj),
+);
+export const addProduct = createAsyncThunk('product/add', (obj: FormData) =>
+  api.addProductFetch(obj),
 );
 
 const productSlice = createSlice({
@@ -45,6 +46,12 @@ const productSlice = createSlice({
         );
       })
       .addCase(updateProduct.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(addProduct.fulfilled, (state, action) => {
+        state.products.push(action.payload);
+      })
+      .addCase(addProduct.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },
