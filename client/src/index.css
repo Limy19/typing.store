@@ -2,35 +2,31 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-background-color: #4dd0e1 ;
+  /* background-color: #4dd0e1; */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-img{
+img {
   width: 100%;
   height: 100%;
   border-radius: 10px;
 }
-button{
+/* button {
+  width: 300px;
+  height: 50px;
+  border-radius: 10px;
+  font-size: 20px;
+} */
+input {
   width: 300px;
   height: 50px;
   border-radius: 10px;
   font-size: 20px;
 }
-button:hover{
-  cursor: pointer;
-  width: 400px;
-}
-input{
-    width: 300px;
-    height: 50px;
-    border-radius: 10px;
-    font-size: 20px;
-}
-form{
+form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,12 +34,24 @@ form{
   min-height: 500px;
 }
 /////
-.categoryCard{
-
+.categoryCard {
 }
-.allCategory{
+.allCategory {
   display: flex;
 }
-.productAll{
+.productAll {
   display: flex;
+}
+.NoTextDecoration {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+.NavBarText {
+  display: flex;
+  font-family: 'Martian Mono';
+  font-weight: 700;
+  letter-spacing: '.01rem';
+  color: 'inherit';
+  text-decoration: 'none';
+  margin-right: 5%;
 }
