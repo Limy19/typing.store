@@ -22,6 +22,7 @@ function ProductPage(): JSX.Element {
 
   const del = (): void => {
     void dispatch(deleteProduct(productId));
+    navigate(-1);
   };
   const buy = (): void => {
     void dispatch(add(product.id));

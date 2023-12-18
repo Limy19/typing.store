@@ -46,15 +46,15 @@ const productSlice = createSlice({
       })
       .addCase(deleteProduct.fulfilled, (state, action) => {
         state.products = state.products.filter((product) => product.id !== action.payload);
+        state.product = undefined;
       })
       .addCase(deleteProduct.rejected, (state, action) => {
         state.error = action.error.message;
       })
       .addCase(updateProduct.fulfilled, (state, action) => {
-        state.products = state.products.map((product) =>
-          product.id === action.payload.id ? action.payload : product,
-        );
+        state.product = action.payload;
       })
+
       .addCase(updateProduct.rejected, (state, action) => {
         state.error = action.error.message;
       })

@@ -16,7 +16,7 @@ function UppDateCard({ product, setState }: typeProps): JSX.Element {
 
   const productUpdate = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    void dispatch(updateProduct({ id: product.id, name, description, stock, price }));
+    dispatch(updateProduct({ id: product.id, name, description, stock, price }))
     setState(false);
   };
 
