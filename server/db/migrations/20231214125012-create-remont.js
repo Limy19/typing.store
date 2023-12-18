@@ -17,6 +17,10 @@ module.exports = {
           key: 'id',
         },
       },
+      name: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
       phone: {
         type: Sequelize.TEXT,
         allowNull: false,

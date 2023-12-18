@@ -8,7 +8,7 @@ const initialState: State = {
   error: undefined,
 };
 
-export const repair = createAsyncThunk('repair/form', (obj: Repair) => api.repairFetch(obj));
+export const addRepair = createAsyncThunk('repair/form', (obj: Repair) => api.repairFetch(obj));
 
 const authSlice = createSlice({
   name: 'repair',
@@ -17,10 +17,10 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
 
-      .addCase(repair.fulfilled, (state, action) => {
+      .addCase(addRepair.fulfilled, (state, action) => {
         state.repair = action.payload;
       })
-      .addCase(repair.rejected, (state, action) => {
+      .addCase(addRepair.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

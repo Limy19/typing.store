@@ -8,6 +8,7 @@ import cartSlice from '../features/CartPage/cartSlice';
 
 import productSlice from '../features/ProductList/productSlice';
 import cardSlice from '../features/lk/cardSlice';
+import repairSlice from '../features/Repair/components/repairSlice';
 
 const store = configureStore({
   reducer: {
@@ -15,13 +16,9 @@ const store = configureStore({
     category: categorySlice,
     speedTest: speedTestSlice,
     cart: cartSlice,
-
-
-
-
     card: cardSlice,
     product: productSlice,
-
+    repaire: repairSlice,
   },
 });
 
