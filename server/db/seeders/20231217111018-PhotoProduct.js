@@ -19,13 +19,13 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          img: '/img/BLOCK-67 R2.1.webp',
+          img: '/img/1.webp',
           productId: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          img: '/img/BLOCK-67 R2.2.webp',
+          img: '/img/2.webp',
           productId: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -67,13 +67,13 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          img: '/img/JWK HERA SWITCH / 10PCS.1.webp',
+          img: '/img/3.webp',
           productId: 6,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          img: '/img/JWK HERA SWITCH / 10PCS.2.webp',
+          img: '/img/4.webp',
           productId: 6,
           createdAt: new Date(),
           updatedAt: new Date(),
