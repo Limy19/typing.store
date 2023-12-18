@@ -1,9 +1,10 @@
 import React from 'react';
 
 function Repair(): JSX.Element {
+
   return (
     <div>
-      <form>
+      <form >
         <input type="text" placeholder="name" />
         <input type="tel" placeholder="tel" />
         <input type="text" placeholder="email" />
