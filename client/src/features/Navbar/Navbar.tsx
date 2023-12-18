@@ -20,6 +20,7 @@ function Navbar(): JSX.Element {
     void dispatch(logout());
   };
   return (
+
     <AppBar>
       <Toolbar>
         <IconButton sx={{ mr: 2 }}>
@@ -87,6 +88,7 @@ function Navbar(): JSX.Element {
         </IconButton>
       </Toolbar>
     </AppBar>
+
 
   );
 }
