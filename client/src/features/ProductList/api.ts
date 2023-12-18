@@ -1,7 +1,11 @@
-import { IdCategory } from '../CategoryList/type/categoryType';
-import type { IdProduct, Product, ProductWithoutCategoryId } from './type/productType';
+import type { IdProduct, Product, ProductWithoutCategoryIdandPhotos } from './type/productType';
 
-export const initProductFetch = async (id: IdCategory): Promise<Product[]> => {
+export const initProductOneFetch = async (id: string | undefined): Promise<Product> => {
+  const data: Product = await (await fetch(`/api/product/${id}`)).json();
+  return data;
+};
+
+export const initProductFetch = async (id: string | undefined): Promise<Product[]> => {
   const data: Product[] = await (await fetch(`/api/category/${id}`)).json();
   return data;
 };
@@ -19,7 +23,7 @@ export const updateProductFetch = async ({
   description,
   stock,
   price,
-}: ProductWithoutCategoryId): Promise<Product> => {
+}: ProductWithoutCategoryIdandPhotos): Promise<Product> => {
   const data: Product = await (
     await fetch(`/api/product/${id}`, {
       method: 'PUT',

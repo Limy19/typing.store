@@ -1,5 +1,6 @@
 export type State = {
   products: Product[];
+  product: undefined | Product;
   error: undefined | string;
 };
 export type PhotoProduct = {
@@ -18,4 +19,4 @@ export type Product = {
 };
 export type IdProduct = Product['id'];
 
-export type ProductWithoutCategoryId = Omit<Product, 'categoryId' | 'photos'>;
+export type ProductWithoutCategoryIdandPhotos = Omit<Product, 'categoryId' | 'PhotoProducts'>;

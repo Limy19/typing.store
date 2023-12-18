@@ -14,9 +14,7 @@ const store = configureStore({
     auth: authSlice,
     category: categorySlice,
     speedTest: speedTestSlice,
-
     cart: cartSlice,
-
     product:productSlice,
 
   },

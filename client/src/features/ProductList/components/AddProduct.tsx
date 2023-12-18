@@ -9,6 +9,7 @@ function AddProduct(): JSX.Element {
   const priceInput = useRef<HTMLInputElement>(null);
   const stockInput = useRef<HTMLInputElement>(null);
   const descriptionInput = useRef<HTMLInputElement>(null);
+  const imgInput = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
 
   const productAdd = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -17,8 +18,13 @@ function AddProduct(): JSX.Element {
     const price = priceInput.current?.value;
     const description = descriptionInput.current?.value;
     const stock = stockInput.current?.value;
+    const img = imgInput.current?.files;
 
     const formData = new FormData();
+
+    for (const key in img) {
+      formData.append('img', img[key]);
+    }
 
     formData.append('name', name);
     formData.append('description', description);
@@ -33,6 +39,7 @@ function AddProduct(): JSX.Element {
       <form onSubmit={productAdd}>
         <input name="name" type="text" ref={nameInput} placeholder="name" />
         <input name="price" type="number" ref={priceInput} placeholder="price" />
+        <input name="img" type="file" multiple ref={imgInput} />
         <input name="description" type="text" ref={descriptionInput} placeholder="description" />
         <input name="stock" type="number" ref={stockInput} placeholder="stock" />
         <button type="submit">Добавить</button>
@@ -41,4 +48,4 @@ function AddProduct(): JSX.Element {
   );
 }
 
-export default AddProduct;
+export default  AddProduct;
