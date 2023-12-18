@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'Parabole';
+  src: url('Parabole.eot');
+  src:
+    local('Parabole'),
+    url('Parabole.eot?#iefix') format('embedded-opentype'),
+    url('Parabole.woff2') format('woff2'),
+    url('Parabole.woff') format('woff'),
+    url('Parabole.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -45,13 +59,51 @@ form {
 .NoTextDecoration {
   text-decoration: none;
   color: rgb(0, 0, 0);
+  font-family: 'IBM Plex Mono';
 }
 .NavBarText {
   display: flex;
-  font-family: 'Martian Mono';
+  font-family: 'IBM Plex Mono';
   font-weight: 700;
   letter-spacing: '.01rem';
   color: 'inherit';
   text-decoration: 'none';
   margin-right: 5%;
+}
+.navbar,
+.NODecorationButton {
+  display: flex;
+  height: 85px;
+  font-family: 'IBM Plex Mono';
+  font-weight: 600;
+  font-size: 25px;
+  letter-spacing: '.01rem';
+  justify-content: space-between;
+  text-decoration: 'none';
+  align-items: center;
+  color: rgb(5, 5, 5);
+  padding: 10px;
+}
+
+.navbar > div {
+  display: flex;
+  align-items: center;
+}
+
+.center {
+  flex-grow: 1;
+  justify-content: center;
+  font-family: 'Parabole';
+  font-weight: 800;
+  font-size: 55px;
+  letter-spacing: '.01rem';
+}
+
+span {
+  margin: 0 10px;
+}
+
+.NODecorationButton {
+  background: none;
+  border: 0px;
 }

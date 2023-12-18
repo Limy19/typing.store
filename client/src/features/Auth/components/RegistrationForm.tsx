@@ -48,7 +48,7 @@ function RegistrationForm(): JSX.Element {
   }, [user]);
 
   return (
-    <div>
+    <div className='registrationForm'>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input type="text" placeholder="name" {...register('name')} />
         <span>{errors.name?.message}</span>

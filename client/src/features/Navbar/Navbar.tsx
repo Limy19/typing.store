@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
 import { ShoppingBasket, KeyboardAltRounded } from '@mui/icons-material';
@@ -9,9 +9,6 @@ import { logout } from '../Auth/authSlice';
 
 import NavbarSideElement from './NavbarSideElement';
 
-import { useNavigate } from 'react-router-dom';
-
-
 function Navbar(): JSX.Element {
   const dispatch = useAppDispatch();
   const user = useSelector((store: RootState) => store.auth.user);
@@ -20,76 +17,43 @@ function Navbar(): JSX.Element {
     void dispatch(logout());
   };
   return (
+    <div className="navbar">
+      <div className="left">
+        <span>
+          <Link to="/" className="NoTextDecoration">
+            PRODUCTS
+          </Link>
+        </span>
+        <span>ABOUT</span>
+      </div>
+      <div className="center">
+        <span>TYPETYPE.STORE...</span>
+      </div>
 
-    <AppBar>
-      <Toolbar>
-        <IconButton sx={{ mr: 2 }}>
-          <Link className="NoTextDecoration" to="/">
-            <KeyboardAltRounded sx={{ color: 'white' }} />
-          </Link>
-        </IconButton>
-        <Typography
-          className="NavBarText"
-          variant="h5"
-          noWrap
-          component="a"
-          sx={{
-            mr: 2,
-          }}
-        >
-          <Link className="NoTextDecoration" to="/">
-            клавиатуры
-          </Link>
-        </Typography>
-        <NavbarSideElement />
-        {user ? (
-          <>
-            <div className="underline decoration-wavy">привет, {user.name}!</div>
-            <button type="button" onClick={onClick}>
-              выйти
+      {user ? (
+        <div className="right">
+          <span className='CARD'>CARD</span>
+          <span>
+            <button className="NODecorationButton" type="button" onClick={onClick}>
+              LOGOUT
             </button>
-          </>
-        ) : (
-          <>
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              className="NavBarText"
-              sx={{
-                mr: 2,
-              }}
-            >
-              <Link className="NoTextDecoration" to="/registration">
-                регистрация
-              </Link>
-            </Typography>
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              className="NavBarText"
-              sx={{
-                mr: 2,
-                
-              }}
-            >
-              <Link className="NoTextDecoration" to="/login">
-                войти
-              </Link>
-            </Typography>
-          </>
-        )}
-
-        <IconButton>
-          <Link className="NoTextDecoration" to="/cart">
-            <ShoppingBasket sx={{ color: 'white' }} />
-          </Link>
-        </IconButton>
-      </Toolbar>
-    </AppBar>
-
-
+          </span>
+        </div>
+      ) : (
+        <div className="right">
+          <span>
+            <Link className="NoTextDecoration" to="/registration">
+              REGISTRATION
+            </Link>
+          </span>
+          <span>
+            <Link className="NoTextDecoration" to="/login">
+              LOGIN
+            </Link>
+          </span>
+        </div>
+      )}
+    </div>
   );
 }
 
