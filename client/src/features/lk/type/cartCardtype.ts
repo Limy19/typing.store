@@ -1,3 +1,4 @@
+import { CartItem } from '../../CartPage/type/cartType';
 import type { Product } from '../../ProductList/type/productType';
 
 export type State = {
@@ -5,7 +6,7 @@ export type State = {
 };
 
 export type CartCard = {
-  Product: Product;
+  CartItems: CartItem[];
   status: 'new' | 'ordered' | 'delivered';
   id: number;
 };
