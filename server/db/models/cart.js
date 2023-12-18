@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       status: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.ENUM("new", "ordererd", "delivered"),
         allowNull: false,
       },
     },
