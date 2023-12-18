@@ -22,7 +22,12 @@ router.post('/registration', async (req, res) => {
         });
 
         const { accessToken, refreshToken } = generateTokens({
-          user: { id: user.id, email: user.email, name: user.name },
+          user: {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            isAdmin: user.isAdmin,
+          },
         });
 
         res
@@ -97,6 +102,7 @@ router.get('/logout', (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
 router.get('/check', (req, res) => {
   if (res.locals.user) {
     res.json({ message: 'success', user: res.locals.user });

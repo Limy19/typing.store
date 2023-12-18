@@ -1,35 +1,31 @@
-import React, {  useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
 import UppDateCard from './UppDateCard';
-import { deleteProduct} from '../productSlice';
+import { deleteProduct, initProductOne } from '../productSlice';
 
 import type { RootState } from '../../../store/store';
 import { add } from '../../CartPage/cartSlice';
-import type { Product } from '../type/productType';
 
 function ProductPage(): JSX.Element {
   const { productId } = useParams();
 
   const [state, setState] = useState(false);
   const user = useSelector((store: RootState) => store.auth.user);
-  const products = useSelector((store: RootState) => store.product.products);
+  const product = useSelector((store: RootState) => store.product.product);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
 
-console.log(products);
-
-  const product = products.find((prod: Product) => prod.id === Number(productId));
-  console.log(product, '>>>>>>>>>>.');
+  useEffect(() => {
+    dispatch(initProductOne(productId));
+  }, []);
 
   const del = (): void => {
-    void dispatch(deleteProduct(product.id));
+    void dispatch(deleteProduct(productId));
   };
   const buy = (): void => {
     void dispatch(add(product.id));
   };
-  console.log(product?.PhotoProducts, '<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>');
 
   return (
     <div>
@@ -46,7 +42,7 @@ console.log(products);
       {user?.isAdmin ? (
         <>
           {state && <UppDateCard product={product} setState={setState} />}
-          <button type="button" onClick={del}>
+          <button type="button" onClick={() => del()}>
             удалить
           </button>
           <button type="button" onClick={() => setState(true)}>
