@@ -9,6 +9,7 @@ const initialState: State = {
 export const add = createAsyncThunk('cart/add', api.addFetch);
 export const remove = createAsyncThunk('cart/remove', api.deleteFetch);
 export const load = createAsyncThunk('cart/load', api.loadFetch);
+export const order = createAsyncThunk('cart/order', api.changeStatusFetch);
 
 const cartSlice = createSlice({
   name: 'cart',

@@ -20,6 +20,7 @@ module.exports = {
           model: "Products",
           key: "id",
         },
+        onDelete: "cascade",
       },
       createdAt: {
         allowNull: false,

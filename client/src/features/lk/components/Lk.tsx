@@ -8,6 +8,8 @@ import { load } from '../cardSlice';
 function LkPage(): JSX.Element {
   const dispatch = useAppDispatch();
   const cartCards = useSelector((store: RootState) => store.card.cartCard);
+  console.log(cartCards);
+
   useEffect(() => {
     void dispatch(load());
   }, []);
