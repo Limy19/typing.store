@@ -11,7 +11,6 @@ import NavbarSideElement from './NavbarSideElement';
 
 import { useNavigate } from 'react-router-dom';
 
-
 function Navbar(): JSX.Element {
   const dispatch = useAppDispatch();
   const user = useSelector((store: RootState) => store.auth.user);
@@ -20,8 +19,7 @@ function Navbar(): JSX.Element {
     void dispatch(logout());
   };
   return (
-
-    <AppBar>
+    <AppBar position="public">
       <Toolbar>
         <IconButton sx={{ mr: 2 }}>
           <Link className="NoTextDecoration" to="/">
@@ -71,7 +69,6 @@ function Navbar(): JSX.Element {
               className="NavBarText"
               sx={{
                 mr: 2,
-                
               }}
             >
               <Link className="NoTextDecoration" to="/login">
@@ -88,8 +85,6 @@ function Navbar(): JSX.Element {
         </IconButton>
       </Toolbar>
     </AppBar>
-
-
   );
 }
 
