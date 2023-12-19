@@ -51,3 +51,7 @@ export const addProductFetch = async (obj: FormData): Promise<Product> => {
   const data: Product = await res.json();
   return data;
 };
+export const initProductsFetch = async (): Promise<Product[]> => {
+  const data: Product[] = await (await fetch(`/api/product`)).json();
+  return data;
+};

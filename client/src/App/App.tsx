@@ -16,6 +16,7 @@ import CartPage from '../features/CartPage/components/CartPage';
 import ProductPage from '../features/ProductList/components/ProductPage';
 import Repair from '../features/Repair/components/Repair';
 import About from '../features/MainPage/About';
+import KonsructorPage from '../features/Konstructor/components/KonsructorPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -39,6 +40,7 @@ function App(): JSX.Element {
           <Route path="/lk" element={<Lk />} />
           <Route path="/repair" element={<Repair />} />
           <Route path="/about" element={<About />} />
+          <Route path="/konstructor" element={<KonsructorPage />} />
         </Route>
       </Routes>
     </div>

@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, createAction } from '@reduxjs/toolkit';
 import type { State } from './type/cartType';
 import * as api from './api';
+import { addToCart } from '../Konstructor/konsructorSlice';
 
 const initialState: State = {
   cartItems: [],
@@ -25,6 +26,12 @@ const cartSlice = createSlice({
       })
       .addCase(load.fulfilled, (state, action) => {
         state.cartItems = action.payload;
+      })
+      .addCase(order.fulfilled, (state, action) => {
+        state.cartItems = [];
+      })
+      .addCase(addToCart.fulfilled, (state, action) => {
+        state.cartItems.push(...action.payload);
       });
   },
 });

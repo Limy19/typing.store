@@ -16,6 +16,7 @@ export type Product = {
   stock: number;
   categoryId: number;
   PhotoProducts: PhotoProduct[];
+  Category?: { id: number; name: string };
 };
 export type IdProduct = Product['id'];
 
