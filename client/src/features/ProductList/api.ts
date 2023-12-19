@@ -55,7 +55,8 @@ export const addProductFetch = async (obj: FormData): Promise<Product> => {
 
 export const initProductsFetch = async (): Promise<Product[]> => {
   const data: Product[] = await (await fetch(`/api/product`)).json();
-
+  return data;
+};
 
 export const initFevoritesFetch = async (): Promise<Favorite[]> => {
   const data: Favorite[] = await (await fetch('/api/favorites')).json();
