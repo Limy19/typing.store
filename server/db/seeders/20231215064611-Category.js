@@ -8,19 +8,19 @@ module.exports = {
       [
         {
           name: 'KEYBOARDS',
-          img: 'https://keygem.com/cdn/shop/products/unknown_f5342996-bb16-4237-8078-4f51fe50eee4.png?v=1652281200&width=1000',
+          img: 'https://static.insales-cdn.com/r/MEQazG8nGsc/rs:fit:1920:1920:1/plain/images/products/1/6810/674986650/ducky-mini.jpg@webp',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           name: 'KEYCAPS',
-          img: 'https://keygem.com/cdn/shop/products/51-zp1kHvyL._AC_SL1500_-removebg.png?v=1613505237&width=1000',
+          img: 'https://thekey.company/cdn/shop/products/Marshmallow_Production-6_1024x1024.jpg?v=1656694795',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           name: 'SWITCHES',
-          img: 'https://keygem.com/cdn/shop/files/P1020123.jpg?v=1690543892&width=1000',
+          img: 'https://thekey.company/cdn/shop/files/SwitchesWebsite-10_1024x1024.jpg?v=1685026064',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
