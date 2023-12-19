@@ -9,6 +9,7 @@ import cartSlice from '../features/CartPage/cartSlice';
 import productSlice from '../features/ProductList/productSlice';
 import cardSlice from '../features/lk/cardSlice';
 import repairSlice from '../features/Repair/repairSlice';
+import favoritesSlice from '../features/ProductList/favoritesSlice';
 
 const store = configureStore({
   reducer: {
@@ -19,6 +20,7 @@ const store = configureStore({
     card: cardSlice,
     product: productSlice,
     repaire: repairSlice,
+    favorites: favoritesSlice,
   },
 });
 
