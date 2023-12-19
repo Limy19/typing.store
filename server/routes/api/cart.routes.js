@@ -22,9 +22,10 @@ router.post("/add", async (req, res) => {
     return res.json({ message: "Товар закончился" });
   }
   const [cart, createdCart] = await Cart.findOrCreate({
-    where: { userId: res.locals.user.id },
+    where: { userId: res.locals.user.id, status: "new" },
     defaults: { userId: res.locals.user.id, status: "new" },
   });
+
   const cartId = cart?.id || createdCart?.id;
   let [cartItem, created] = await CartItem.findOrCreate({
     where: { productId, cartId },
@@ -52,8 +53,20 @@ router.delete("/:id", async (req, res) => {
 router.post("/order", async (req, res) => {
   try {
     const cart = await Cart.findOne({
-      where: { userId: res.locals.user.id, status: "new" },
+      where: {
+        userId: res.locals.user.id,
+        status: "new",
+      },
+      include: [CartItem],
     });
+    await Promise.all(
+      cart.CartItems.map(async (item) => {
+        const product = await Product.findByPk(item.productId);
+        console.log(cart.CartItems);
+        product.stock -= item.count;
+        await product.save();
+      })
+    );
     cart.status = "ordererd";
     await cart.save();
     res.json(cart);

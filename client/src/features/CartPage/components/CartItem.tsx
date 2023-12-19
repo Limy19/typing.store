@@ -16,6 +16,7 @@ function CartItem({ cartItem }: CartItemProps): JSX.Element {
     <div>
       <h5>{cartItem.Product?.name}</h5>
       <p>Количество:{cartItem.count}</p>
+      <p>Цена:{cartItem.Product?.price}</p>
       <button onClick={handleDelete}>Удалить</button>
     </div>
   );

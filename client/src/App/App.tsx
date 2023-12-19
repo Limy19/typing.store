@@ -11,7 +11,7 @@ import { initCategory } from '../features/CategoryList/categorySlice';
 import CategoryPage from '../features/CategoryList/components/CategoryPage';
 
 import SpeedTest from '../features/speedTest/components/SpeedTest';
-import Lk from '../features/lk/components/Lk';
+import Lk from '../features/lk/components/LkPage';
 import CartPage from '../features/CartPage/components/CartPage';
 import ProductPage from '../features/ProductList/components/ProductPage';
 import Repair from '../features/Repair/components/Repair';

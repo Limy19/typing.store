@@ -7,11 +7,9 @@ type cartCardProps = {
 };
 
 function CartCardComponents({ cartCard }: cartCardProps): JSX.Element {
-  const dispatch = useAppDispatch();
-
   return (
     <div>
-      <p>Товары:</p>
+      <p>Ваш заказ:</p>
       {cartCard.CartItems?.map((cartitem) => cartitem.Product.name)}
       {cartCard.CartItems?.map((cartitem) => cartitem.Product.price)}
       {/* <p>Цена:{cartCard.Product.price}</p> */}
