@@ -15,9 +15,9 @@ import Lk from '../features/lk/components/Lk';
 import CartPage from '../features/CartPage/components/CartPage';
 import ProductPage from '../features/ProductList/components/ProductPage';
 import Repair from '../features/Repair/components/Repair';
+import About from '../features/MainPage/About';
 
 function App(): JSX.Element {
- 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -38,6 +38,7 @@ function App(): JSX.Element {
           <Route path="/speedTest" element={<SpeedTest />} />
           <Route path="/lk" element={<Lk />} />
           <Route path="/repair" element={<Repair />} />
+          <Route path="/about" element={<About />} />
         </Route>
       </Routes>
     </div>

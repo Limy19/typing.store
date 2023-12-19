@@ -11,5 +11,7 @@ export const repairFetch = async (obj: Repair): Promise<Repair> => {
     throw message;
   }
   const data = await res.json();
-  return data;
+  // console.log(data);
+
+  return data.remont;
 };
