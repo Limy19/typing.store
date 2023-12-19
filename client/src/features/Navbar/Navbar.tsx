@@ -22,10 +22,12 @@ function Navbar(): JSX.Element {
             PRODUCTS
           </Link>
         </span>
-        <span className="navSpan">ABOUT</span>
+        <span className="navSpan">
+          <Link to="/about">ABOUT</Link>
+        </span>
       </div>
       <div className="center">
-        <span>TYPETYPE.STORE...</span>
+        <span className='spanCenter'>TYPETYPE.STORE...</span>
       </div>
 
       {user ? (

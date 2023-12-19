@@ -9,7 +9,11 @@ import cartSlice from '../features/CartPage/cartSlice';
 import productSlice from '../features/ProductList/productSlice';
 import cardSlice from '../features/lk/cardSlice';
 import repairSlice from '../features/Repair/repairSlice';
+
 import konsructorSlice from '../features/Konstructor/konsructorSlice';
+
+import favoritesSlice from '../features/ProductList/favoritesSlice';
+
 
 const store = configureStore({
   reducer: {
@@ -21,6 +25,7 @@ const store = configureStore({
     product: productSlice,
     repaire: repairSlice,
     konsructor: konsructorSlice,
+    favorites: favoritesSlice,
   },
 });
 

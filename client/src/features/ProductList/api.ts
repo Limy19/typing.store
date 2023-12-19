@@ -1,3 +1,4 @@
+import { Favorite } from './type/favorietesType';
 import type { IdProduct, Product, ProductWithoutCategoryIdandPhotos } from './type/productType';
 
 export const initProductOneFetch = async (id: string | undefined): Promise<Product> => {
@@ -51,7 +52,26 @@ export const addProductFetch = async (obj: FormData): Promise<Product> => {
   const data: Product = await res.json();
   return data;
 };
+
 export const initProductsFetch = async (): Promise<Product[]> => {
   const data: Product[] = await (await fetch(`/api/product`)).json();
+
+
+export const initFevoritesFetch = async (): Promise<Favorite[]> => {
+  const data: Favorite[] = await (await fetch('/api/favorites')).json();
+  return data;
+};
+
+export const addFavoritestFetch = async (id: IdProduct): Promise<Favorite[]> => {
+  const data: Favorite[] = await (
+    await fetch('/api/favorites', {
+      method: 'POST',
+      body: JSON.stringify({ id }),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    })
+  ).json();
+
   return data;
 };
