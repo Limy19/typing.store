@@ -6,19 +6,15 @@ import type { RootState } from '../../store/store';
 import { useAppDispatch } from '../../store/store';
 import { logout } from '../Auth/authSlice';
 
-
-
-
 function Navbar(): JSX.Element {
   const dispatch = useAppDispatch();
   const user = useSelector((store: RootState) => store.auth.user);
-  
+
   const navigate = useNavigate();
   const onClick = (): void => {
     void dispatch(logout());
   };
   return (
-
     <div className="navbar">
       <div className="left">
         <span>
@@ -26,7 +22,7 @@ function Navbar(): JSX.Element {
             PRODUCTS
           </Link>
         </span>
-        <span>ABOUT</span>
+        <span className="navSpan">ABOUT</span>
       </div>
       <div className="center">
         <span>TYPETYPE.STORE...</span>
@@ -34,13 +30,28 @@ function Navbar(): JSX.Element {
 
       {user ? (
         <div className="right">
-          <span className='CARD'>ACCOUNT</span>
-          {/* <Link to={'/logout'}> </Link> */}
-          <span>
-            <button className="NODecorationButton" type="button" onClick={onClick}>
-              CARD (0)
+          <div className="dropdown">
+            <button className="dropbtn" type="button">
+              <span className="CARD">
+                <Link className="NoTextDecoration" to="/lk">
+                  ACCOUNT
+                </Link>
+              </span>
             </button>
+            <div className="dropdown-content">
+              <Link to="/speedTest"> TYPETEST </Link>
+              <a href="#" onClick={onClick}>
+                LOGOUT
+              </a>
+            </div>
+          </div>
 
+          <span>
+            <button className="NODecorationButton" type="button">
+              <Link className="NoTextDecoration" to="/cart">
+                CARD (0)
+              </Link>
+            </button>
           </span>
         </div>
       ) : (
@@ -58,8 +69,9 @@ function Navbar(): JSX.Element {
         </div>
       )}
     </div>
-
   );
 }
 
 export default Navbar;
+
+// onClick={onClick}
