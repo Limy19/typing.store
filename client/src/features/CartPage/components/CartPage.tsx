@@ -15,16 +15,24 @@ function CartPage(): JSX.Element {
     navigate('/lk');
   };
   const cartItems = useSelector((store: RootState) => store.cart.cartItems);
+  const sum = cartItems.reduce((acc, item) => {
+    return acc + item.Product.price * item.count;
+  }, 0);
+  console.log(sum);
+
   useEffect(() => {
     void dispatch(load());
   }, []);
   return (
     <div>
-      <CartItemsList cartItems={cartItems} />
-      <button type="button" onClick={handleChange}>
-        купить
-      </button>
-      ;
+      {cartItems.length > 0 && (
+        <>
+          <CartItemsList cartItems={cartItems} />
+          <button type="button" onClick={handleChange}>
+            Сумма заказа: {sum}
+          </button>
+        </>
+      )}
     </div>
   );
 }
