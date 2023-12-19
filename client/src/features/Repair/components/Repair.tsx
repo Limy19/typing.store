@@ -31,17 +31,19 @@ function Repair(): JSX.Element {
     e.target.reset();
   };
   return (
-    <div>
-      {active && <ModalWindow active={active} setActive={setActive} />}
-      <form onSubmit={repairAdd}>
-        <input type="text" name="name" placeholder="name" ref={nameInput} />
-        <input type="tel" name="tel" placeholder="tel" ref={telInput} />
-        <input type="text" name="email" placeholder="email" ref={emailInput} />
-        <input type="text" name="description" placeholder="описание" ref={descriptionInput} />
-        <button type="submit" onClick={() => setActive(true)}>
-          оставать заявку
-        </button>
-      </form>
+    <div className='preFoarm'>
+      <div className='registrationForm'>
+        {active && <ModalWindow active={active} setActive={setActive} />}
+        <form style={{ minHeight: '395px' }} onSubmit={repairAdd}>
+          <input type="text" name="name" placeholder="name" required ref={nameInput} />
+          <input type="tel" name="tel" placeholder="tel" required ref={telInput} />
+          <input type="text" name="email" placeholder="email" required ref={emailInput} />
+          <input type="text" name="description" placeholder="описание" required ref={descriptionInput} />
+          <button className="formButton" type="submit" onClick={() => setActive(true)}>
+            REPAIR KEYBOARD
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

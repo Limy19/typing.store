@@ -35,17 +35,21 @@ function AddProduct(): JSX.Element {
     void dispatch(addProduct(formData));
   };
   return (
-    <div>
-      <form onSubmit={productAdd}>
-        <input name="name" type="text" ref={nameInput} placeholder="name" />
-        <input name="price" type="number" ref={priceInput} placeholder="price" />
-        <input name="img" type="file" multiple ref={imgInput} />
-        <input name="description" type="text" ref={descriptionInput} placeholder="description" />
-        <input name="stock" type="number" ref={stockInput} placeholder="stock" />
-        <button type="submit">Добавить</button>
-      </form>
+    <div className="preFoarm">
+      <div className="addForm">
+        <form style={{ minHeight: '425px' }} onSubmit={productAdd}>
+          <input name="name" type="text" ref={nameInput} placeholder="name" />
+          <input name="price" type="number" ref={priceInput} placeholder="price" />
+          <input name="img" type="file" multiple ref={imgInput} />
+          <input name="description" type="text" ref={descriptionInput} placeholder="description" />
+          <input name="stock" type="number" ref={stockInput} placeholder="stock" />
+          <button className="formButton" type="submit">
+            ADD CARD
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
 
-export default  AddProduct;
+export default AddProduct;

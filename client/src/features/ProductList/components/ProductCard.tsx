@@ -26,8 +26,6 @@ function ProductCard({ product }: { product: Product }): JSX.Element {
   };
 
   return (
-
-
     <div className="product-card">
       <div className="product-image">
         <Link className="NoTextDecoration" to={`/product/${product.id}`}>
@@ -36,25 +34,24 @@ function ProductCard({ product }: { product: Product }): JSX.Element {
       </div>
       <div className="product-details">
         <div className="product-info">
-          <h2 className='h2productCard'>{product.name}</h2>
-          <p className='pProductCard'>{product.description}</p>
+          <h2 className="h2productCard">{product.name}</h2>
+          <p className="pProductCard">{product.description}</p>
+          {isFavorite ? (
+            <FavoriteIcon onClick={() => handleRemoveFromFavorites(product.id)} />
+          ) : (
+            <FavoriteBorderIcon onClick={() => handleAddToFavorites(product.id)} />
+          )}
         </div>
         <div className="product-price">
-          <h2 className='h2productCard'>{product.price}$ </h2>
-          <p className='pProductCard'>{product.stock}шт </p>
+          <h2 className="h2productCard">{product.price}$ </h2>
+          <p className="pProductCard">Qty x{product.stock} </p>
           {!user?.isAdmin && (
-            <button type="button" onClick={buy}>
-              купить
+            <button className ='DecorationButtonByu'type="button" onClick={buy}>
+              BUY
             </button>
           )}
-                {isFavorite ? (
-        <FavoriteIcon onClick={() => handleRemoveFromFavorites(product.id)} />
-      ) : (
-        <FavoriteBorderIcon onClick={() => handleAddToFavorites(product.id)} />
-      )}
         </div>
       </div>
-
     </div>
   );
 }

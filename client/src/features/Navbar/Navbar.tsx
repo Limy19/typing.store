@@ -9,6 +9,7 @@ import { logout } from '../Auth/authSlice';
 function Navbar(): JSX.Element {
   const dispatch = useAppDispatch();
   const user = useSelector((store: RootState) => store.auth.user);
+  const cart = useSelector((store: RootState) => store.cart.cartItems);
 
   const navigate = useNavigate();
   const onClick = (): void => {
@@ -22,12 +23,22 @@ function Navbar(): JSX.Element {
             PRODUCTS
           </Link>
         </span>
-        <span className="navSpan">
-          <Link to="/about">ABOUT</Link>
-        </span>
+        <div className="dropdown">
+          <button className="dropbtn" type="button">
+            <span className="CARD">
+              <Link className="NoTextDecoration" to="/about">
+                ABOUT
+              </Link>
+            </span>
+          </button>
+          <div className="dropdown-content">
+            <Link to="/konstructor"> CONSTRUCTOR </Link>
+            <Link to ='/repair'> REPAIR</Link>
+          </div>
+        </div>
       </div>
       <div className="center">
-        <span className='spanCenter'>TYPETYPE.STORE...</span>
+        <span className="spanCenter">TYPETYPE.STORE...</span>
       </div>
 
       {user ? (
@@ -51,7 +62,7 @@ function Navbar(): JSX.Element {
           <span>
             <button className="NODecorationButton" type="button">
               <Link className="NoTextDecoration" to="/cart">
-                CARD (0)
+                {cart.length === 0 ? `CARD (0)` : `CARD (${cart.length})`}
               </Link>
             </button>
           </span>

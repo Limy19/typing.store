@@ -246,7 +246,7 @@ span {
 }
 .product-image {
   display: block;
-  width: 75%;
+  width: 65%;
   position: relative;
   height: auto;
   align-items: center;
@@ -255,13 +255,79 @@ span {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  align-items: flex-end;
- 
+  align-items: stretch;
+  flex-direction: row;
 }
-.h2productCard{
+.h2productCard {
   font-family: 'IBM Plex Mono';
   font-weight: 600;
 }
-.pProductCard{
-  
+.pProductCard {
+}
+
+.DecorationButtonByu{
+  font-size: 15px;
+  text-decoration: none;
+  background-color: #ffa800;
+  cursor: pointer;
+  border: 0px;
+  border-radius: 5px;
+}
+
+.about{
+  display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.textabout{
+  margin-left: 20px;
+}
+
+.formButton{
+  font-family: 'IBM Plex Mono';
+  font-size: 35px;
+  border: 0px;
+  background-color: #ffa800;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.registrationForm{
+  margin-right: 5%;
+  display: flex;
+  background-color: #e6e6e6;
+  width: 400px;
+  height: 440px;
+  border-radius: 15px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.preFoarm{
+  display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 4%;
+}
+.LoginForm{
+  display: flex;
+  background-color: #e6e6e6;
+  width: 400px;
+  height: 300px;
+  border-radius: 15px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.addForm{
+  display: flex;
+  background-color: #e6e6e6;
+  width: 400px;
+  height: 480px;
+  border-radius: 15px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

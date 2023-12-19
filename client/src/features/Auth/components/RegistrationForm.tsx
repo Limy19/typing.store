@@ -48,8 +48,9 @@ function RegistrationForm(): JSX.Element {
   }, [user]);
 
   return (
+    <div className='preFoarm'>
     <div className='registrationForm'>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form style={{ minHeight: '348px' }} onSubmit={handleSubmit(onSubmit)}>
         <input type="text" placeholder="name" {...register('name')} />
         <span>{errors.name?.message}</span>
         <input type="email" placeholder="email" {...register('email')} />
@@ -58,9 +59,10 @@ function RegistrationForm(): JSX.Element {
         <span>{errors.password?.message}</span>
         <input type="password" placeholder="cpassword" {...register('cpassword')} />
         <span>{errors.cpassword?.message}</span>
-        <button type="submit">registration</button>
+        <button className="formButton" type="submit">REGISTRATION</button>
       </form>
       <div>{error}</div>
+    </div>
     </div>
   );
 }

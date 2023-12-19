@@ -41,15 +41,19 @@ function LoginForm(): JSX.Element {
   }, [user]);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="email" placeholder="email" {...register('email')} />
-        <span>{errors.email?.message}</span>
-        <input type="password" placeholder="password" {...register('password')} />
-        <span>{errors.password?.message}</span>
-        <button type="submit">Войти</button>
-      </form>
-      <div>{error}</div>
+    <div className="preFoarm">
+      <div className="LoginForm">
+        <form style={{ minHeight: '235px' }} onSubmit={handleSubmit(onSubmit)}>
+          <input type="email" placeholder="email" {...register('email')} />
+          <span>{errors.email?.message}</span>
+          <input type="password" placeholder="password" {...register('password')} />
+          <span>{errors.password?.message}</span>
+          <button className="formButton" type="submit">
+            SIGN IN
+          </button>
+        </form>
+        <div>{error}</div>
+      </div>
     </div>
   );
 }
