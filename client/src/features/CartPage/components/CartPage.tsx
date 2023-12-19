@@ -16,9 +16,9 @@ function CartPage(): JSX.Element {
   };
   const cartItems = useSelector((store: RootState) => store.cart.cartItems);
   const sum = cartItems.reduce((acc, item) => {
-    return acc + item.Product.price * item.count;
+    return acc + item.Product?.price * item.count;
   }, 0);
-  console.log(sum);
+  console.log(cartItems);
 
   useEffect(() => {
     void dispatch(load());

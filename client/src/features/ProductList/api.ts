@@ -53,6 +53,10 @@ export const addProductFetch = async (obj: FormData): Promise<Product> => {
   return data;
 };
 
+export const initProductsFetch = async (): Promise<Product[]> => {
+  const data: Product[] = await (await fetch(`/api/product`)).json();
+
+
 export const initFevoritesFetch = async (): Promise<Favorite[]> => {
   const data: Favorite[] = await (await fetch('/api/favorites')).json();
   return data;
@@ -68,5 +72,6 @@ export const addFavoritestFetch = async (id: IdProduct): Promise<Favorite[]> => 
       },
     })
   ).json();
+
   return data;
 };

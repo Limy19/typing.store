@@ -24,6 +24,7 @@ export const updateProduct = createAsyncThunk(
 export const addProduct = createAsyncThunk('product/add', (obj: FormData) =>
   api.addProductFetch(obj),
 );
+export const loadProducts = createAsyncThunk('product/load', () => api.initProductsFetch());
 
 const productSlice = createSlice({
   name: 'product',
@@ -62,6 +63,12 @@ const productSlice = createSlice({
         state.products.push(action.payload);
       })
       .addCase(addProduct.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(loadProducts.fulfilled, (state, action) => {
+        state.products = action.payload;
+      })
+      .addCase(loadProducts.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

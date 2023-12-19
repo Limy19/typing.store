@@ -3,7 +3,7 @@ const { Cart, CartItem, Product } = require("../../db/models");
 
 router.get("/", async (req, res) => {
   const cart = await Cart.findOne({
-    where: { userId: res.locals.user.id },
+    where: { userId: res.locals.user.id, status: "new" },
     include: [
       {
         model: CartItem,
@@ -30,6 +30,7 @@ router.post("/add", async (req, res) => {
   let [cartItem, created] = await CartItem.findOrCreate({
     where: { productId, cartId },
     defaults: { productId, cartId, count: 1 },
+    include: [Product],
   });
   if (!created) {
     if (product.stock > cartItem.count) {

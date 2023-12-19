@@ -1,8 +1,8 @@
-const router = require('express').Router();
-const { Product, PhotoProduct } = require('../../db/models');
-const fileUpload = require('../../utils/fileupload');
+const router = require("express").Router();
+const { Product, PhotoProduct, Category } = require("../../db/models");
+const fileUpload = require("../../utils/fileupload");
 
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const product = await Product.findOne({
       where: { id: req.params.id },
@@ -15,7 +15,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const product = await Product.findOne({
@@ -28,7 +28,7 @@ router.delete('/:id', async (req, res) => {
       if (respons) {
         res.status(200).json({ id: product.id });
       } else {
-        res.status(400).json({ message: 'Произошла ошибка при удалении' });
+        res.status(400).json({ message: "Произошла ошибка при удалении" });
       }
     }
   } catch ({ message }) {
@@ -37,7 +37,7 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const { name, description, stock, price } = req.body;
@@ -54,10 +54,10 @@ router.put('/:id', async (req, res) => {
         await product.save();
         res.status(200).json(product);
       } else {
-        res.status(400).json({ message: 'Это не Ваше' });
+        res.status(400).json({ message: "Это не Ваше" });
       }
     } else {
-      res.status(400).json({ message: 'Заполните все поля' });
+      res.status(400).json({ message: "Заполните все поля" });
     }
   } catch ({ message }) {
     console.log(message);
@@ -65,7 +65,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const { categoryId, description, name, price, stock } = req.body;
 
@@ -97,11 +97,15 @@ router.post('/', async (req, res) => {
 
       res.status(201).json(newProduct);
     } else {
-      res.status(400).json({ message: 'Заполните все поля' });
+      res.status(400).json({ message: "Заполните все поля" });
     }
   } catch ({ message }) {
     console.log(message);
     res.status(500).json({ message });
   }
+});
+router.get("/", async (req, res) => {
+  const products = await Product.findAll({ include: [Category, PhotoProduct] });
+  res.json(products);
 });
 module.exports = router;
