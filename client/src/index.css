@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'Parabole';
-  src: url('Parabole.eot');
+  src: url('../public/fonts/parabole/Parabole.eot');
   src:
-    local('Parabole'),
+    local('../public/fonts/parabole/Parabole.eot'),
     url('Parabole.eot?#iefix') format('embedded-opentype'),
-    url('Parabole.woff2') format('woff2'),
+    url('../public/fonts/parabole/Parabole.woff2') format('woff2'),
     url('Parabole.woff') format('woff'),
     url('Parabole.ttf') format('truetype');
   font-weight: normal;
@@ -62,7 +62,6 @@ form {
 }
 .NavBarText {
   display: flex;
-  font-family: 'IBM Plex Mono';
   font-weight: 700;
   letter-spacing: '.01rem';
   color: 'inherit';
@@ -73,9 +72,9 @@ form {
 .NODecorationButton {
   display: flex;
   height: 85px;
-  font-family: 'IBM Plex Mono';
   font-weight: 600;
   font-size: 25px;
+
   letter-spacing: '.01rem';
   justify-content: space-between;
   text-decoration: 'none';
@@ -83,7 +82,9 @@ form {
   color: #121214;
   padding: 10px;
 }
-
+.NODecorationButton {
+  font-family: 'IBM Plex Mono';
+}
 .navbar > div {
   display: flex;
   align-items: center;
@@ -218,7 +219,49 @@ span {
   background-color: #ffffff00;
 }
 
-.productCard {
-  width: 350px;
-  height: 250px;
+.spanCenter {
+  font-family: 'Parabole';
+}
+.productCardMap {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+.productAll {
+  display: flex;
+  flex-direction: column;
+}
+.product-card {
+  display: flex;
+  margin: 15px;
+  width: 500px;
+  height: 540px;
+  background-color: #e6e6e6;
+  border-radius: 15px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.product-image {
+  display: block;
+  width: 75%;
+  position: relative;
+  height: auto;
+  align-items: center;
+}
+.product-details {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+ 
+}
+.h2productCard{
+  font-family: 'IBM Plex Mono';
+  font-weight: 600;
+}
+.pProductCard{
+  
 }

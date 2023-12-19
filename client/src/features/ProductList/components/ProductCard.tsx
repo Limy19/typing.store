@@ -17,19 +17,50 @@ function ProductCard({ product }: { product: Product }): JSX.Element {
   console.log(product.PhotoProducts);
 
   return (
-    <div className="productCard">
-      <Link className="NoTextDecoration" to={`/product/${product.id}`}>
-        <h2>{product.name}</h2>
-      </Link>
-      <img src={`${product.PhotoProducts[0].img}`} alt="" />
-      <p>{product.description}</p>
-      <p>{product.price}$ </p>
-      <p>{product.stock}шт </p>
-      {!user?.isAdmin && (
-        <button type="button" onClick={buy}>
-          купить
-        </button>
-      )}
+    // <div className="product-card">
+    //   <div className="product-image">
+    //     <Link className="NoTextDecoration" to={`/product/${product.id}`}>
+    //       <img src={`${product.PhotoProducts[0].img}`} alt="Product Image" />
+    //     </Link>
+    //   </div>
+    //   <div className="product-details">
+    //     <div className="product-info">
+    //       <h2>{product.name}</h2>
+    //       <p>{product.description}</p>
+    //       <p>{product.stock}шт </p>
+    //     </div>
+    //     <div className="product-price">
+    //       <p>{product.price}$ </p>
+    //       {!user?.isAdmin && (
+    //         <button type="button" onClick={buy}>
+    //           купить
+    //         </button>
+    //       )}
+    //     </div>
+    //   </div>
+    // </div>.
+
+    <div className="product-card">
+      <div className="product-image">
+        <Link className="NoTextDecoration" to={`/product/${product.id}`}>
+          <img src={`${product.PhotoProducts[0].img}`} alt="Product Image" />
+        </Link>
+      </div>
+      <div className="product-details">
+        <div className="product-info">
+          <h2 className='h2productCard'>{product.name}</h2>
+          <p className='pProductCard'>{product.description}</p>
+        </div>
+        <div className="product-price">
+          <h2 className='h2productCard'>{product.price}$ </h2>
+          <p className='pProductCard'>{product.stock}шт </p>
+          {!user?.isAdmin && (
+            <button type="button" onClick={buy}>
+              купить
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
