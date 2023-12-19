@@ -8,7 +8,7 @@ import cartSlice from '../features/CartPage/cartSlice';
 
 import productSlice from '../features/ProductList/productSlice';
 import cardSlice from '../features/lk/cardSlice';
-import repairSlice from '../features/Repair/components/repairSlice';
+import repairSlice from '../features/Repair/repairSlice';
 
 const store = configureStore({
   reducer: {
