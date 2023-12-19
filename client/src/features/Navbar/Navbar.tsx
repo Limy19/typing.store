@@ -1,18 +1,18 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
-import { ShoppingBasket, KeyboardAltRounded } from '@mui/icons-material';
+
 import type { RootState } from '../../store/store';
 import { useAppDispatch } from '../../store/store';
 import { logout } from '../Auth/authSlice';
 
-import NavbarSideElement from './NavbarSideElement';
+
 
 
 function Navbar(): JSX.Element {
   const dispatch = useAppDispatch();
   const user = useSelector((store: RootState) => store.auth.user);
+  
   const navigate = useNavigate();
   const onClick = (): void => {
     void dispatch(logout());
@@ -34,10 +34,11 @@ function Navbar(): JSX.Element {
 
       {user ? (
         <div className="right">
-          <span className='CARD'>CARD</span>
+          <span className='CARD'>ACCOUNT</span>
+          {/* <Link to={'/logout'}> </Link> */}
           <span>
             <button className="NODecorationButton" type="button" onClick={onClick}>
-              LOGOUT
+              CARD (0)
             </button>
 
           </span>

@@ -1,17 +1,29 @@
 import React from 'react';
-import type { Category } from '../type/categoryType';
 import { Link } from 'react-router-dom';
-import { Grid } from '@mui/material';
+import type { Category } from '../type/categoryType';
 
 function CategoryCard({ category }: { category: Category }): JSX.Element {
   return (
-    <Grid item xs={8} md={4}>
-      <img src={category.img} alt="pupupu" />
-
-      <h2>
-        <Link to={`/category/${category.id}`}>{category.name}</Link>
-      </h2>
-    </Grid>
+    <section className="mainPageFirstBanner">
+      <div className="top-string">
+        <h1>
+          {category.name}
+          {category.name}
+          {category.name}
+        </h1>
+      </div>
+      <img className="bannerMainPage" src={category.img} alt="" />
+      <div className="bottom-string">
+        <h1>
+          {category.name}
+          {category.name}
+          {category.name}
+        </h1>
+      </div>
+      <div className='center-string'><h2>
+          <Link className ='cardTextCategory'to={`/category/${category.id}`}>{category.name}</Link>
+        </h2></div>
+    </section>
   );
 }
 
