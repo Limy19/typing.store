@@ -60,6 +60,15 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: 'EQUALZ X TKC FRUIT SMOOTHIE SWITCHES',
+          description: 'JWK HERA SWITCH / 10PCS описание',
+          price: 7,
+          categoryId: 3,
+          stock: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

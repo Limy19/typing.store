@@ -10,19 +10,18 @@ function CategoryCard({ category }: { category: Category }): JSX.Element {
           {category.name}
           {category.name}
           {category.name}
+          {category.name}
+          {category.name}
         </h1>
       </div>
       <img className="bannerMainPage" src={category.img} alt="" />
-      <div className="bottom-string">
-        <h1>
-          {category.name}
-          {category.name}
-          {category.name}
-        </h1>
+      <div className="center-string">
+        <h2>
+          <Link className="cardTextCategory" to={`/category/${category.id}`}>
+            {category.name}
+          </Link>
+        </h2>
       </div>
-      <div className='center-string'><h2>
-          <Link className ='cardTextCategory'to={`/category/${category.id}`}>{category.name}</Link>
-        </h2></div>
     </section>
   );
 }

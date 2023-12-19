@@ -8,20 +8,20 @@ import { add } from '../../CartPage/cartSlice';
 import { initProduct } from '../productSlice';
 
 function ProductCard({ product }: { product: Product }): JSX.Element {
- 
   const user = useSelector((store: RootState) => store.auth.user);
   const dispatch = useAppDispatch();
 
   const buy = (): void => {
     void dispatch(add(product.id));
   };
-
+  console.log(product.PhotoProducts);
 
   return (
-    <div>
-      <Link to={`/product/${product.id}`}>
+    <div className="productCard">
+      <Link className="NoTextDecoration" to={`/product/${product.id}`}>
         <h2>{product.name}</h2>
       </Link>
+      <img src={`${product.PhotoProducts[0].img}`} alt="" />
       <p>{product.description}</p>
       <p>{product.price}$ </p>
       <p>{product.stock}шт </p>

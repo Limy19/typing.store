@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../../../store/store';
+import Keyboard from 'react-simple-keyboard';
+import type { RootState} from '../../../store/store';
+import { useAppDispatch } from '../../../store/store';
 import Text from './Text';
 import { loadtext, start, stop, tryChar } from '../speedTestSlice';
-import Keyboard from 'react-simple-keyboard';
 import 'react-simple-keyboard/build/css/index.css';
 import layout from 'simple-keyboard-layouts/build/layouts/russian';
 
@@ -52,7 +53,7 @@ function SpeedTest(): JSX.Element {
       {speed && <span>Символов в минуту : {speed}</span>}
       <Keyboard
         physicalKeyboardHighlightBgColor="#0ff"
-        physicalKeyboardHighlight={true}
+        physicalKeyboardHighlight
         {...layout}
       />
     </div>
