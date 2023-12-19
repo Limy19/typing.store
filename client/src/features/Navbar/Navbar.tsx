@@ -27,7 +27,7 @@ function Navbar(): JSX.Element {
         </span>
       </div>
       <div className="center">
-        <span>TYPETYPE.STORE...</span>
+        <span className='spanCenter'>TYPETYPE.STORE...</span>
       </div>
 
       {user ? (
