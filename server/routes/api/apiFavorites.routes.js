@@ -4,9 +4,9 @@ const { User, Product, Like } = require('../../db/models');
 router.get('/', async (req, res) => {
   try {
     const likes = await Like.findAll({
-      row: true,
-      include: { model: Product, where: {} },
+      where: { userId: res.locals.user.id },
     });
+    console.log(likes, '++++++');
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -19,17 +19,25 @@ router.post('/', async (req, res) => {
       userId: res.locals.user.id,
       productId: id,
     });
-    await Like.findAll({ where: { userId: res.locals.user.id } });
+    res.json(addLike);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+});
 
-    if (addLike) {
-      const products = await Like.findAll({
-        row: true,
-        include: { model: Product, where: { id: addLike.productId } },
-      });
-      //   console.log(product[0].Product, '!!!!!');
-      res.json({ products });
+router.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const product = await Like.findOne({ where: { productId: id } });
+    if (product) {
+      const del = await Like.destroy({ where: { productId: id } });
+      if (del > 0) {
+        res.json({ message: 'ok', product });
+      } else {
+        res.status(400).json({ message: 'Cannot be deleted from favorites' });
+      }
     } else {
-      res.status(400).json({ message: 'Cannot be saved to favorites' });
+      res.status(400).json({ message: 'Cannot be deleted ' });
     }
   } catch (error) {
     return res.status(500).json({ message: error.message });

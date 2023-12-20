@@ -8,8 +8,14 @@ const initialState: State = {
   favorites: [],
   error: undefined,
 };
+export const initFavorites = createAsyncThunk('favorietes/init', () => api.initFevoritesFetch());
+
 export const addFavorites = createAsyncThunk('favorietes/add', (id: IdProduct) =>
   api.addFavoritestFetch(id),
+);
+
+export const deleteFavorites = createAsyncThunk('favorietes/delete', (id: IdProduct) =>
+  api.deleteFavoritestFetch(id),
 );
 
 const favoritesSlice = createSlice({
@@ -18,12 +24,22 @@ const favoritesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-
-      .addCase(addFavorites.fulfilled, (state, action) => {
+      .addCase(initFavorites.fulfilled, (state, action) => {
         state.favorites = action.payload;
-        console.log(action.payload, '>>>>>>');
+      })
+      .addCase(initFavorites.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(addFavorites.fulfilled, (state, action) => {
+        state.favorites.push(action.payload);
       })
       .addCase(addFavorites.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(deleteFavorites.fulfilled, (state, action) => {
+        // state.favorites = state.favorites.filter((like) => like.id !== action.payload);
+      })
+      .addCase(deleteFavorites.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

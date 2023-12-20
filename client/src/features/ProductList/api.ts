@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Favorite } from './type/favorietesType';
 import type { IdProduct, Product, ProductWithoutCategoryIdandPhotos } from './type/productType';
 
@@ -63,8 +64,8 @@ export const initFevoritesFetch = async (): Promise<Favorite[]> => {
   return data;
 };
 
-export const addFavoritestFetch = async (id: IdProduct): Promise<Favorite[]> => {
-  const data: Favorite[] = await (
+export const addFavoritestFetch = async (id: IdProduct): Promise<Favorite> => {
+  const data: Favorite = await (
     await fetch('/api/favorites', {
       method: 'POST',
       body: JSON.stringify({ id }),
@@ -73,6 +74,17 @@ export const addFavoritestFetch = async (id: IdProduct): Promise<Favorite[]> => 
       },
     })
   ).json();
+
+  return data;
+};
+
+export const deleteFavoritestFetch = async (id: IdProduct): Promise<void> => {
+  const data = await (
+    await fetch(`/api/favorites/${id}`, {
+      method: 'DELETE',
+    })
+  ).json();
+  console.log(data, '>>>>>');
 
   return data;
 };

@@ -17,6 +17,7 @@ import ProductPage from '../features/ProductList/components/ProductPage';
 import Repair from '../features/Repair/components/Repair';
 import About from '../features/MainPage/About';
 import KonsructorPage from '../features/Konstructor/components/KonsructorPage';
+import { initFavorites } from '../features/ProductList/favoritesSlice';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -24,6 +25,7 @@ function App(): JSX.Element {
   useEffect(() => {
     void dispatch(check());
     void dispatch(initCategory());
+    void dispatch(initFavorites());
   }, []);
 
   return (

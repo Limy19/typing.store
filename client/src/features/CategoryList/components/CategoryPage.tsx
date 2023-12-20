@@ -14,17 +14,16 @@ function CategoryPage(): JSX.Element {
   const products = useSelector((store: RootState) => store.product.products);
 
   useEffect(() => {
-   void dispatch(initProduct(categoryId));
+    void dispatch(initProduct(categoryId));
   }, []);
-
 
   return (
     <div className="productAll">
       {user?.isAdmin && <AddProduct />}
-      <div className='productCardMap'>
-      {products.map((product) => (
-        <ProductCard product={product} key={product.id} />
-      ))}
+      <div className="productCardMap">
+        {products.map((product) => (
+          <ProductCard product={product} key={product.id} />
+        ))}
       </div>
     </div>
   );
