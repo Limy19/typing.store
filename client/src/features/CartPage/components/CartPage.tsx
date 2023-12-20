@@ -22,13 +22,16 @@ function CartPage(): JSX.Element {
     void dispatch(load());
   }, []);
   return (
-    <div>
+    <div className="CartPages">
       {cartItems.length > 0 && (
         <>
           <CartItemsList cartItems={cartItems} />
-          <button type="button" onClick={handleChange}>
-            Сумма заказа: {sum}
-          </button>
+          
+          <div className='orderButtonDiv'>
+            <button className="NODecorationButtonCart2" type="button" onClick={handleChange}>
+              CHECKOUT: {sum}
+            </button>
+          </div>
         </>
       )}
     </div>

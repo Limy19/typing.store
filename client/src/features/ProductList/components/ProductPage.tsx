@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
+import Slider from 'react-slick';
 import UppDateCard from './UppDateCard';
 import { deleteProduct, initProductOne } from '../productSlice';
-
 import type { RootState } from '../../../store/store';
 import { add } from '../../CartPage/cartSlice';
 
@@ -29,34 +29,102 @@ function ProductPage(): JSX.Element {
   };
 
   return (
-    <div>
-      <div>
-        {product?.PhotoProducts.map((photo) => <img alt="pupupu" src={photo.img} key={photo.id} />)}
+    <div className="about">
+      <div
+        className="img"
+        style={{
+          width: '50%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginBottom: '25px',
+        }}
+      >
+        {product?.PhotoProducts.map((photo) => (
+          <img
+            style={{
+              width: '85%',
+              height: '45%',
+              position: 'static',
+              marginBottom: '10px',
+              objectFit: 'cover',
+            }}
+            alt="pupupu"
+            src={photo.img}
+            key={photo.id}
+          />
+        ))}
       </div>
-      <h2>{product?.name}</h2>
-      <p>{product?.description}</p>
-      <p>{product?.price}$</p>
-      <p>{product?.stock}шт </p>
-      <button type="button" onClick={() => navigate(-1)}>
-        {'<--'}
-      </button>
-      {user?.isAdmin ? (
-        <>
-          {state && <UppDateCard product={product} setState={setState} />}
-          <button type="button" onClick={() => del()}>
-            удалить
-          </button>
-          <button type="button" onClick={() => setState(true)}>
-            изменить
-          </button>
-        </>
-      ) : (
-        <button type="button" onClick={buy}>
-          купить
+      <div className="textabout" style={{ width: '50%' }}>
+        <h1
+          style={{
+            color: '#121214',
+            fontSize: '62px',
+            marginBottom: '-75px',
+            fontFamily: 'IBM Plex Mono',
+          }}
+        >
+          {product?.name}
+        </h1>
+        <h1 style={{ color: '#ffa800', fontSize: '62px', fontFamily: 'IBM Plex Mono' }}>
+          {product?.price}$
+        </h1>
+        <div className="black-line" />
+        <p style={{ color: '#121214', fontSize: '18px', fontFamily: 'IBM Plex Mono' }}>
+          {product?.description}
+        </p>
+        <div className="black-line" />
+        <button type="button" onClick={() => navigate(-1)}>
+          {'<--'}
         </button>
-      )}
+        {user?.isAdmin ? (
+          <>
+            {state && <UppDateCard product={product} setState={setState} />}
+            <button type="button" onClick={() => del()}>
+              удалить
+            </button>
+            <button type="button" onClick={() => setState(true)}>
+              изменить
+            </button>
+          </>
+        ) : (
+          <button type="button" onClick={buy}>
+            купить
+          </button>
+        )}
+      </div>
     </div>
   );
 }
 
 export default ProductPage;
+// {
+//    <div>
+//   <div>
+//     {product?.PhotoProducts.map((photo) => <img alt="pupupu" src={photo.img} key={photo.id} />)}
+//   </div>
+//   <h2>{product?.name}</h2>
+//   <p>{product?.description}</p>
+//   <p>{product?.price}$</p>
+//   <p>{product?.stock}шт </p>
+//   <button type="button" onClick={() => navigate(-1)}>
+//     {'<--'}
+//   </button>
+//   {user?.isAdmin ? (
+//     <>
+//       {state && <UppDateCard product={product} setState={setState} />}
+//       <button type="button" onClick={() => del()}>
+//         удалить
+//       </button>
+//       <button type="button" onClick={() => setState(true)}>
+//         изменить
+//       </button>
+//     </>
+//   ) : (
+//     <button type="button" onClick={buy}>
+//       купить
+//     </button>
+//   )}
+// </div>;
+// }

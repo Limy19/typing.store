@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes, useParams } from 'react-router-dom';
 import Registration from '../features/Auth/components/RegistrationForm';
 import Login from '../features/Auth/components/LoginForm';
@@ -21,19 +21,17 @@ import KonsructorPage from '../features/Konstructor/components/KonsructorPage';
 import { load } from '../features/CartPage/cartSlice';
 
 import { initFavorites } from '../features/ProductList/favoritesSlice';
-
+import FullPageLoader from '../features/Preloader/components/FullPageLoader';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
 
+
   useEffect(() => {
     void dispatch(check());
     void dispatch(initCategory());
-
     void dispatch(load());
-
     void dispatch(initFavorites());
-
   }, []);
 
   return (

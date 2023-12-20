@@ -265,7 +265,7 @@ span {
 .pProductCard {
 }
 
-.DecorationButtonByu{
+.DecorationButtonByu {
   font-size: 15px;
   text-decoration: none;
   background-color: #ffa800;
@@ -274,17 +274,17 @@ span {
   border-radius: 5px;
 }
 
-.about{
+.about {
   display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
 }
 
-.textabout{
+.textabout {
   margin-left: 20px;
 }
 
-.formButton{
+.formButton {
   font-family: 'IBM Plex Mono';
   font-size: 35px;
   border: 0px;
@@ -293,7 +293,7 @@ span {
   cursor: pointer;
 }
 
-.registrationForm{
+.registrationForm {
   margin-right: 5%;
   display: flex;
   background-color: #e6e6e6;
@@ -304,13 +304,13 @@ span {
   justify-content: center;
   align-items: center;
 }
-.preFoarm{
+.preFoarm {
   display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 4%;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 4%;
 }
-.LoginForm{
+.LoginForm {
   display: flex;
   background-color: #e6e6e6;
   width: 400px;
@@ -321,7 +321,7 @@ span {
   align-items: center;
 }
 
-.addForm{
+.addForm {
   display: flex;
   background-color: #e6e6e6;
   width: 400px;
@@ -330,4 +330,60 @@ span {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.cartItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 25px;
+  margin-right: 45px;
+}
+
+.priceAndDelete {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  align-content: center;
+  justify-content: space-around;
+}
+
+.NODecorationButtonCart {
+  font-size: 15px;
+  height: 25px;
+  margin-top: 5px;
+  text-decoration: none;
+  background-color: #ffa800;
+  cursor: pointer;
+  border: 0px;
+  border-radius: 5px;
+}
+.NODecorationButtonCart2 {
+  width: 255px;
+  height: 55px;
+  font-size: 15px;
+  text-decoration: none;
+  background-color: #ffa800;
+  cursor: pointer;
+  border: 0px;
+  border-radius: 5px;
+}
+
+.orderButtonDiv {
+  display: flex;
+  position: absolute;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  bottom: 155px;
+  left: 35px;
+  width: 255px;
+}
+.black-line {
+  top: 6;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: black;
+  z-index: 9999; /* Можно настроить z-index в зависимости от вашего макета */
 }
