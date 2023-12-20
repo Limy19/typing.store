@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Favorite } from './type/favorietesType';
+import type { Favorite } from './type/favorietesType';
 import type { IdProduct, Product, ProductWithoutCategoryIdandPhotos } from './type/productType';
 
 export const initProductOneFetch = async (id: string | undefined): Promise<Product> => {
@@ -78,13 +78,14 @@ export const addFavoritestFetch = async (id: IdProduct): Promise<Favorite> => {
   return data;
 };
 
-export const deleteFavoritestFetch = async (id: IdProduct): Promise<void> => {
-  const data = await (
-    await fetch(`/api/favorites/${id}`, {
-      method: 'DELETE',
-    })
-  ).json();
-  console.log(data, '>>>>>');
-
-  return data;
+export const deleteFavoritestFetch = async (id: IdProduct): Promise<IdProduct> => {
+  const data = await fetch(`/api/favorites/${id}`, {
+    method: 'DELETE',
+  });
+  if (!data.ok) {
+    const { message } = await data.json();
+    throw message;
+  }
+  const res: Product = await data.json();
+  return res.id;
 };

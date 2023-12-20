@@ -1,6 +1,5 @@
 import React from 'react';
-import { CartCard } from '../type/cartCardtype';
-import { useAppDispatch } from '../../../store/store';
+import type{ CartCard } from '../type/cartCardtype';
 
 type cartCardProps = {
   cartCard: CartCard;

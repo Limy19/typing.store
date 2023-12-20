@@ -37,7 +37,7 @@ const favoritesSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(deleteFavorites.fulfilled, (state, action) => {
-        // state.favorites = state.favorites.filter((like) => like.id !== action.payload);
+        state.favorites = state.favorites.filter((like) => like.id !== action.payload);
       })
       .addCase(deleteFavorites.rejected, (state, action) => {
         state.error = action.error.message;

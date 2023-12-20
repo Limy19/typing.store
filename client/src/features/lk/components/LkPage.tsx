@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import CartCard from './CartCard';
-import store, { RootState, useAppDispatch } from '../../../store/store';
+import  { RootState, useAppDispatch } from '../../../store/store';
 import { load } from '../cardSlice';
+import Favorites from './Favorites';
 // import CartItemsList from './CartItemsList';
 
 function LkPage(): JSX.Element {
@@ -13,8 +14,10 @@ function LkPage(): JSX.Element {
   useEffect(() => {
     void dispatch(load());
   }, []);
+
   return (
     <div>
+      <Favorites />
       {cartCards.map((cartCard) => (
         <CartCard key={cartCard.id} cartCard={cartCard} />
       ))}

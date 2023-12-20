@@ -1,12 +1,12 @@
-import React, { useEffect, useMemo } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useAppDispatch, type RootState } from '../../../store/store';
 import type { IdProduct, Product } from '../type/productType';
 import { add } from '../../CartPage/cartSlice';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import { addFavorites } from '../favoritesSlice';
+import { addFavorites, deleteFavorites } from '../favoritesSlice';
 
 function ProductCard({ product }: { product: Product }): JSX.Element {
   const user = useSelector((store: RootState) => store.auth.user);
@@ -17,8 +17,10 @@ function ProductCard({ product }: { product: Product }): JSX.Element {
   };
 
   const favorites = useSelector((store: RootState) => store.favorites.favorites);
-  const isFavorite = favorites.find((v) => v.id === product.id);
-  console.log(favorites, '**********');
+  console.log(favorites, 'fffff');
+
+  const isFavorite = favorites.find((v) => v.productId === product.id);
+  console.log(isFavorite, '**********');
 
   const handleRemoveFromFavorites = (id: IdProduct): void => {
     dispatch(deleteFavorites(id));
