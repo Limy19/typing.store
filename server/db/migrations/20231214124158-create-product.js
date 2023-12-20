@@ -33,6 +33,9 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      meta: {
+        type: Sequelize.JSONB,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

@@ -4,13 +4,23 @@ import { useAppDispatch, type RootState } from '../../../store/store';
 import { loadProducts } from '../../ProductList/productSlice';
 import ProductCard from './ProductCard';
 import { addToCart, pickCase, pickKeycap, pickSwitch } from '../konsructorSlice';
+import CasesFilter from './CasesFilter';
 
 function KonsructorPage(): JSX.Element {
   const products = useSelector((store: RootState) => store.product.products ?? []);
   console.log(products);
-
-  const cases = products.filter((p) => p.Category?.name === 'KEYBOARDS');
+  const casesFilter = useSelector((store: RootState) => store.konsructor.caseFilter);
+  const cases = products
+    .filter((p) => p.Category?.name === 'KEYBOARDS')
+    .filter((p) => {
+      if ('size' in casesFilter && p.meta?.size !== casesFilter.size) {
+        return false;
+      }
+      return true;
+    });
   const switches = products.filter((p) => p.Category?.name === 'SWITCHES');
+  console.log(switches, 'MMMMMMMMMMM');
+
   const keycaps = products.filter((p) => p.Category?.name === 'KEYCAPS');
   const selectedCase = useSelector((store: RootState) => store.konsructor.case);
   const selectedSwitches = useSelector((store: RootState) => store.konsructor.switch);
@@ -28,7 +38,7 @@ function KonsructorPage(): JSX.Element {
   return (
     <div>
       <div>
-        Выберите кейс:{' '}
+        Выберите кейс: <CasesFilter />
         {cases.map((c) => (
           <ProductCard
             product={c}
