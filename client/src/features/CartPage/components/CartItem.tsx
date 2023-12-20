@@ -1,5 +1,5 @@
 import React from 'react';
-import { CartItem as CartItemType } from '../type/cartType';
+import type { CartItem as CartItemType } from '../type/cartType';
 import { useAppDispatch } from '../../../store/store';
 import { remove } from '../cartSlice';
 
@@ -13,12 +13,23 @@ function CartItem({ cartItem }: CartItemProps): JSX.Element {
     dispatch(remove(cartItem.id));
   };
   return (
-    <div>
-      <h5>{cartItem.Product?.name}</h5>
-      <p>Количество:{cartItem.count}</p>
-      <p>Цена:{cartItem.Product?.price}</p>
-      <button onClick={handleDelete}>Удалить</button>
-    </div>
+    <>
+      <div className="cartItem">
+        <div className="cartNameAndCount">
+          <h1>
+            {cartItem.Product?.name} x{cartItem.count}
+          </h1>
+        </div>
+        <div className="priceAndDelete">
+          <h1>Цена:{cartItem.Product?.price}</h1>
+
+          <button className="NODecorationButtonCart" type="button" onClick={handleDelete}>
+           X
+          </button>
+        </div>
+      </div>
+      <div className="black-line" />
+    </>
   );
 }
 
