@@ -23,7 +23,7 @@ function ProductCard({
       style={{ border: active ? '1px solid #0F0' : 'none', height: 'auto', marginBottom: 12 }}
     >
       <h2>{product.name}</h2>
-      <img src={`${product.PhotoProducts[0].img}`} alt="" />
+      <img src={`${product.PhotoProducts?.[0]?.img}`} alt="" />
       <p>{product.description}</p>
       <p>{product.price}$ </p>
       <p>{product.stock}шт </p>

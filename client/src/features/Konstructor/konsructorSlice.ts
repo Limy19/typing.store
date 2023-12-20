@@ -8,6 +8,7 @@ const initialState: State = {
   case: null,
   switch: null,
   keycap: null,
+  caseFilter: {},
 };
 
 export const pickCase = createAction<Product>('konsructor/pickCase');
@@ -17,6 +18,7 @@ export const pickKeycap = createAction<Product>('konsructor/pickKeycap');
 export const addToCart = createAsyncThunk('konsructor/addCart', async (products: Product[]) => {
   return Promise.all(products.map((p) => cartapi.addFetch(p.id)));
 });
+export const changeCaseFilter = createAction<{name: string, value:string}>('konsructor/changeCaseFilter')
 
 const konsructorSlice = createSlice({
   name: 'card',
@@ -32,11 +34,14 @@ const konsructorSlice = createSlice({
       })
       .addCase(pickKeycap, (state, action) => {
         state.keycap = action.payload;
-      }).addCase(addToCart.fulfilled, (state, action) => {
+      })
+      .addCase(addToCart.fulfilled, (state, action) => {
         state.case = null;
         state.switch = null;
         state.keycap = null;
-      });
+      }).addCase(changeCaseFilter, (state, action) =>{
+        state.caseFilter[action.payload.name]= action.payload.value
+      })
   },
 });
 

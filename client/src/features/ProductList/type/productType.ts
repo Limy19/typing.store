@@ -17,6 +17,7 @@ export type Product = {
   categoryId: number;
   PhotoProducts: PhotoProduct[];
   Category?: { id: number; name: string };
+  meta?: { size?: string; color?: string };
 };
 export type IdProduct = Product['id'];
 

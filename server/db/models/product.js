@@ -23,6 +23,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: false,
       },
+      meta: {
+        type: DataTypes.JSONB,
+      },
       description: {
         type: DataTypes.TEXT,
         allowNull: false,
