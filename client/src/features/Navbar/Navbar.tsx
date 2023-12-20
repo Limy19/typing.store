@@ -33,7 +33,7 @@ function Navbar(): JSX.Element {
           </button>
           <div className="dropdown-content">
             <Link to="/konstructor"> CONSTRUCTOR </Link>
-            <Link to ='/repair'> REPAIR</Link>
+            <Link to="/repair"> REPAIR</Link>
           </div>
         </div>
       </div>
@@ -62,7 +62,9 @@ function Navbar(): JSX.Element {
           <span>
             <button className="NODecorationButton" type="button">
               <Link className="NoTextDecoration" to="/cart">
-                {cart.length === 0 ? `CARD (0)` : `CARD (${cart.length})`}
+                {cart.length === 0
+                  ? `CARD (0)`
+                  : `CARD (${cart.reduce((acc, el) => acc + el.count, 0)})`}
               </Link>
             </button>
           </span>

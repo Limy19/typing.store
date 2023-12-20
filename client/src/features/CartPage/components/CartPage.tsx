@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { CartItem as CartItemType } from '../type/cartType';
-import CartItem from './CartItem';
-import store, { RootState, useAppDispatch } from '../../../store/store';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+import type { RootState } from '../../../store/store';
+import { useAppDispatch } from '../../../store/store';
 import { load, order } from '../cartSlice';
 import CartItemsList from './CartItemsList';
-import { useNavigate } from 'react-router-dom';
 
 function CartPage(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -15,9 +15,7 @@ function CartPage(): JSX.Element {
     navigate('/lk');
   };
   const cartItems = useSelector((store: RootState) => store.cart.cartItems);
-  const sum = cartItems.reduce((acc, item) => {
-    return acc + item.Product?.price * item.count;
-  }, 0);
+  const sum = cartItems.reduce((acc, item) => acc + item.Product?.price * item.count, 0);
   console.log(cartItems);
 
   useEffect(() => {
