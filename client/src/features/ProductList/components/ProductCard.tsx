@@ -19,9 +19,12 @@ function ProductCard({ product }: { product: Product }): JSX.Element {
   const favorites = useSelector((store: RootState) => store.favorites.favorites);
   const isFavorite = favorites.find((v) => v.id === product.id);
   console.log(favorites, '**********');
-  useEffect(() => {}, []);
-  // const handleRemoveFromFavorites = () => {};
-  const handleAddToFavorites = (id: IdProduct): Promise<void> => {
+
+  const handleRemoveFromFavorites = (id: IdProduct): void => {
+    dispatch(deleteFavorites(id));
+  };
+
+  const handleAddToFavorites = (id: IdProduct): void => {
     dispatch(addFavorites(id));
   };
 
@@ -46,7 +49,7 @@ function ProductCard({ product }: { product: Product }): JSX.Element {
           <h2 className="h2productCard">{product.price}$ </h2>
           <p className="pProductCard">Qty x{product.stock} </p>
           {!user?.isAdmin && (
-            <button className ='DecorationButtonByu'type="button" onClick={buy}>
+            <button className="DecorationButtonByu" type="button" onClick={buy}>
               BUY
             </button>
           )}
