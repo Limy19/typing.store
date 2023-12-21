@@ -104,10 +104,15 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/check', (req, res) => {
-  if (res.locals.user) {
-    res.json({ message: 'success', user: res.locals.user });
-  } else {
-    res.status(401).json({ message: 'Пользователь не аутентифицирован' });
+  try {
+    if (res.locals.user) {
+      res.json({ message: 'success', user: res.locals.user });
+    } else {
+      res.status(401).json({ message: 'Пользователь не аутентифицирован' });
+    }
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ message: error.message });
   }
 });
 module.exports = router;
