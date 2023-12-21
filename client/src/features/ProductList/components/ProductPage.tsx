@@ -8,6 +8,7 @@ import { Carousel } from 'react-responsive-carousel';
 import { deleteProduct, initProductOne } from '../productSlice';
 import type { RootState } from '../../../store/store';
 import { add } from '../../CartPage/cartSlice';
+import UppDateCard from './UppDateCard';
 
 function ProductPage(): JSX.Element {
   const { productId } = useParams();

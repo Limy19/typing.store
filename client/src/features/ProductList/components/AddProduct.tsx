@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { addProduct } from '../productSlice';
 import { useParams } from 'react-router';
+import { addProduct } from '../productSlice';
 
 function AddProduct(): JSX.Element {
   const { categoryId } = useParams();
