@@ -4,6 +4,7 @@ const { Cart, CartItem, Product } = require("../../db/models");
 router.get("/", async (req, res) => {
   const cart = await Cart.findOne({
     where: { userId: res.locals.user.id, status: "new" },
+
     include: [
       {
         model: CartItem,
@@ -11,7 +12,7 @@ router.get("/", async (req, res) => {
       },
     ],
   });
-
+  console.log(res.locals.user.id);
   res.json(cart?.CartItems || []);
 });
 

@@ -34,7 +34,7 @@ function ProductCard({ product }: { product: Product }): JSX.Element {
     <div className="product-card">
       <div className="product-image">
         <Link className="NoTextDecoration" to={`/product/${product.id}`}>
-          <img src={`${product.PhotoProducts[0].img}`} alt="Product Image" />
+          <img src={`${product.PhotoProducts[0]?.img}`} alt="Product Image" />
         </Link>
       </div>
       <div className="product-details">
