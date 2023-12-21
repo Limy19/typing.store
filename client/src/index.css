@@ -254,7 +254,7 @@ span {
   align-items: center;
 }
 .product-details {
-  width: 100%;
+  width: 85%;
   display: flex;
   justify-content: space-around;
   align-items: stretch;
@@ -268,7 +268,7 @@ span {
 }
 
 .DecorationButtonByu {
-  font-size: 15px;
+  font-size: 20px;
   text-decoration: none;
   background-color: #ffa800;
   cursor: pointer;
