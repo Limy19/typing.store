@@ -20,16 +20,19 @@ import KonsructorPage from '../features/Konstructor/components/KonsructorPage';
 import { load } from '../features/CartPage/cartSlice';
 import { initFavorites } from '../features/ProductList/favoritesSlice';
 import FullPageLoader from '../features/Preloader/components/FullPageLoader';
+import { initProduct, initProductAll } from '../features/ProductList/productSlice';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
-
 
   useEffect(() => {
     void dispatch(check());
     void dispatch(initCategory());
     void dispatch(load());
     void dispatch(initFavorites());
+    void dispatch(initProduct(1));
+    void dispatch(initProduct(2));
+    void dispatch(initProduct(3));
   }, []);
 
   return (

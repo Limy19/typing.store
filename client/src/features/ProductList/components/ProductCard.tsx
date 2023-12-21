@@ -17,10 +17,10 @@ function ProductCard({ product }: { product: Product }): JSX.Element {
   };
 
   const favorites = useSelector((store: RootState) => store.favorites.favorites);
-  console.log(favorites, 'fffff');
+  // console.log(favorites, 'fffff');
 
   const isFavorite = favorites.find((v) => v.productId === product.id);
-  console.log(isFavorite, '**********');
+  // console.log(isFavorite, '**********');
 
   const handleRemoveFromFavorites = (id: IdProduct): void => {
     dispatch(deleteFavorites(id));

@@ -7,6 +7,7 @@ export const initProductOneFetch = async (id: string | undefined): Promise<Produ
   return data;
 };
 
+
 export const initProductFetch = async (id: string | undefined): Promise<Product[]> => {
   const data: Product[] = await (await fetch(`/api/category/${id}`)).json();
   return data;

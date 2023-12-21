@@ -29,7 +29,7 @@ function CartPage(): JSX.Element {
 
           <div className="orderButtonDiv">
             <button className="NODecorationButtonCart2" type="button" onClick={handleChange}>
-              Купить: {sum}
+              Купить: {sum} $
             </button>
           </div>
         </>
