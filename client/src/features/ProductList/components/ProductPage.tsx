@@ -88,6 +88,7 @@ function ProductPage(): JSX.Element {
             <button type="button" onClick={() => del()}>
               удалить
             </button>
+            
             <button type="button" onClick={() => setState(true)}>
               изменить
             </button>
