@@ -3,18 +3,19 @@ const { Cart, CartItem, Product } = require('../../db/models');
 
 router.get('/', async (req, res) => {
   try {
-    const cart = await Cart.findOne({
-      where: { userId: res.locals.user.id, status: 'new' },
+    if (res.locals.user) {
+      const cart = await Cart.findOne({
+        where: { userId: res.locals.user.id, status: 'new' },
+        include: [
+          {
+            model: CartItem,
+            include: [Product],
+          },
+        ],
+      });
 
-      include: [
-        {
-          model: CartItem,
-          include: [Product],
-        },
-      ],
-    });
-    console.log(res.locals.user.id);
-    res.json(cart?.CartItems || []);
+      res.json(cart?.CartItems || []);
+    }
   } catch (error) {
     console.log(error);
   }

@@ -27,6 +27,7 @@ router.get('/:id', async (req, res) => {
 
     res.status(200).json(products);
   } catch ({ message }) {
+    console.log(message, '>>>>');
     res.status(500).json({ message });
   }
 });
