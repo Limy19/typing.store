@@ -192,6 +192,66 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          img: '/img/switches/FAIRY1.webp',
+          productId: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          img: '/img/switches/FAIRY2.webp',
+          productId: 18,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          img: '/img/switches/SODA1.webp',
+          productId: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          img: '/img/switches/SODA2.webp',
+          productId: 19,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          img: '/img/switches/BANANA1.webp',
+          productId: 20,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          img: '/img/switches/BANANA2.webp',
+          productId: 20,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          img: '/img/switches/eqalzpink.webp',
+          productId: 21,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          img: '/img/switches/eqalzsecondpink.webp',
+          productId: 21,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          img: '/img/switches/eqalzpink1.webp',
+          productId: 22,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          img: '/img/switches/eqalzpink2.webp',
+          productId: 22,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
