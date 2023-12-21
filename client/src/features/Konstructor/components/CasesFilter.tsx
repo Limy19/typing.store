@@ -40,7 +40,7 @@ function CasesFilter(): JSX.Element {
         value={casesFilter.color ?? ''}
         name="color"
       >
-        <option value="">Выберите размер</option>
+        <option value="">Выберите цвет</option>
         {colors.map((c) => (
           <option key={c} value={c}>
             {c}
