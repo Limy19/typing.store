@@ -15,7 +15,7 @@ function SwitchFilter(): JSX.Element {
   }, [] as string[]);
 
   return (
-    <div>
+    <div style={{ fontSize: '25px', fontFamily: 'IBM Plex Mono' }}>
       Цвет:
       <select
         onChange={(e) => dispatch(changeSwitchFilter({ name: 'click', value: e.target.value }))}

@@ -19,14 +19,21 @@ function ProductCard({
   return (
     <div
       onClick={onClick}
-      className="productCard"
-      style={{ border: active ? '1px solid #0F0' : 'none', height: 'auto', marginBottom: 12 }}
+      className="productCardKonstructor"
+      style={{ border: active ? '5px solid #0ff' : 'none', height: 'auto', marginBottom: 12 }}
     >
       <h2>{product.name}</h2>
-      <img src={`${product.PhotoProducts?.[0]?.img}`} alt="" />
-      <p>{product.description}</p>
-      <p>{product.price}$ </p>
-      <p>{product.stock}шт </p>
+      <img
+        className="imgKonstructor"
+        src={`${product.PhotoProducts?.[0]?.img}`}
+        alt=""
+        style={{ width: '85%' }}
+      />
+      <div className="product-info">
+        <p>{product.description}</p>
+        <p>{product.price}$ </p>
+        <p className="pProductCard">Qty x{product.stock} </p>
+      </div>
     </div>
   );
 }

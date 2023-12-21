@@ -15,7 +15,7 @@ function KeycapsFilter(): JSX.Element {
   }, [] as string[]);
 
   return (
-    <div>
+    <div style={{ fontSize: '25px', fontFamily: 'IBM Plex Mono' }}>
       Цвет:
       <select
         onChange={(e) =>
