@@ -18,7 +18,13 @@ export const pickCase = createAction<Product>('konsructor/pickCase');
 export const pickSwitch = createAction<Product>('konsructor/pickSwitch');
 export const pickKeycap = createAction<Product>('konsructor/pickKeycap');
 export const addToCart = createAsyncThunk('konsructor/addCart', async (products: Product[]) => {
-  return Promise.all(products.map((p) => cartapi.addFetch(p.id)));
+  // return Promise.all(products.map((p) => cartapi.addFetch(p.id)));
+  const result: Product[] = [];
+  for (let product of products) {
+    const res = await cartapi.addFetch(product.id);
+    result.push(res);
+  }
+  return result;
 });
 export const changeCaseFilter = createAction<{ name: string; value: string }>(
   'konsructor/changeCaseFilter',
