@@ -79,22 +79,42 @@ function ProductPage(): JSX.Element {
           {product?.description}
         </p>
         <div className="black-line" />
-        <button type="button" onClick={() => navigate(-1)}>
+        <button
+          className="DecorationButtonByu"
+          style={{ marginTop: '15px', marginRight: '15px' }}
+          type="button"
+          onClick={() => navigate(-1)}
+        >
           {'<--'}
         </button>
         {user?.isAdmin ? (
           <>
             {state && <UppDateCard product={product} setState={setState} />}
-            <button type="button" onClick={() => del()}>
+            <button
+              style={{ marginTop: '15px', marginRight: '15px' }}
+              className="DecorationButtonByu"
+              type="button"
+              onClick={() => del()}
+            >
               удалить
             </button>
 
-            <button type="button" onClick={() => setState(true)}>
+            <button
+              style={{ marginTop: '15px' }}
+              className="DecorationButtonByu"
+              type="button"
+              onClick={() => setState(true)}
+            >
               изменить
             </button>
           </>
         ) : user ? (
-          <button type="button" onClick={buy}>
+          <button
+            className="DecorationButtonByu"
+            style={{ marginTop: '15px' }}
+            type="button"
+            onClick={buy}
+          >
             купить
           </button>
         ) : null}
