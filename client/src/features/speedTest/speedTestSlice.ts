@@ -24,6 +24,7 @@ const speedTestSlice = createSlice({
       .addCase(start.fulfilled, (state, action) => {
         state.timeStart = action.payload;
         state.timeFinish = null;
+        state.index = 0;
       })
       .addCase(stop.fulfilled, (state, action) => {
         state.timeFinish = action.payload;
@@ -38,6 +39,7 @@ const speedTestSlice = createSlice({
       })
       .addCase(loadtext.fulfilled, (state, action) => {
         state.text = action.payload;
+        state.index = 0;
       });
   },
 });

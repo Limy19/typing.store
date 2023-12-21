@@ -43,9 +43,9 @@ export const changeStatusFetch = async (): Promise<Cart> => {
     headers: { 'Content-Type': 'Application/json' },
     body: JSON.stringify({}),
   });
-  const { message, cart } = await res.json();
-  if (!res.ok || !cart) {
+  if (!res.ok) {
+    const { message } = await res.json();
     throw message;
   }
-  return cart;
+  return res.json();
 };
