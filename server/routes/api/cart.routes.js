@@ -1,34 +1,38 @@
-const router = require("express").Router();
-const { Cart, CartItem, Product } = require("../../db/models");
+const router = require('express').Router();
+const { Cart, CartItem, Product } = require('../../db/models');
 
-router.get("/", async (req, res) => {
-  const cart = await Cart.findOne({
-    where: { userId: res.locals.user.id, status: "new" },
+router.get('/', async (req, res) => {
+  try {
+    const cart = await Cart.findOne({
+      where: { userId: res.locals.user.id, status: 'new' },
 
-    include: [
-      {
-        model: CartItem,
-        include: [Product],
-      },
-    ],
-  });
-  console.log(res.locals.user.id);
-  res.json(cart?.CartItems || []);
+      include: [
+        {
+          model: CartItem,
+          include: [Product],
+        },
+      ],
+    });
+    console.log(res.locals.user.id);
+    res.json(cart?.CartItems || []);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
-router.post("/add", async (req, res) => {
+router.post('/add', async (req, res) => {
   const { productId } = req.body;
   const product = await Product.findOne({ where: { id: productId } });
   if (product.stock === 0) {
-    return res.json({ message: "Товар закончился" });
+    return res.json({ message: 'Товар закончился' });
   }
   const [cart, createdCart] = await Cart.findOrCreate({
-    where: { userId: res.locals.user.id, status: "new" },
-    defaults: { userId: res.locals.user.id, status: "new" },
+    where: { userId: res.locals.user.id, status: 'new' },
+    defaults: { userId: res.locals.user.id, status: 'new' },
   });
 
   const cartId = cart?.id || createdCart?.id;
-  let [cartItem, created] = await CartItem.findOrCreate({
+  const [cartItem, created] = await CartItem.findOrCreate({
     where: { productId, cartId },
     defaults: { productId, cartId, count: 1 },
     include: [Product],
@@ -38,26 +42,26 @@ router.post("/add", async (req, res) => {
       cartItem.count++;
       await cartItem.save();
     } else {
-      return res.json({ message: "Нельзя добавить больше" });
+      return res.json({ message: 'Нельзя добавить больше' });
     }
   }
-  res.status(200).json({ cartItem, message: "success" });
+  res.status(200).json({ cartItem, message: 'success' });
 });
-router.delete("/:id", async (req, res) => {
+router.delete('/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const cartItem = await CartItem.destroy({ where: { id } });
-    res.json({ message: "success" });
+    res.json({ message: 'success' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
-router.post("/order", async (req, res) => {
+router.post('/order', async (req, res) => {
   try {
     const cart = await Cart.findOne({
       where: {
         userId: res.locals.user.id,
-        status: "new",
+        status: 'new',
       },
       include: [CartItem],
     });
@@ -69,7 +73,7 @@ router.post("/order", async (req, res) => {
         await product.save();
       })
     );
-    cart.status = "ordererd";
+    cart.status = 'ordererd';
     await cart.save();
     res.json(cart);
   } catch (error) {

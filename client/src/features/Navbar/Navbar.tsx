@@ -63,8 +63,8 @@ function Navbar(): JSX.Element {
             <button className="NODecorationButton" type="button">
               <Link className="NoTextDecoration" to="/cart">
                 {cart.length === 0
-                  ? `CARD (0)`
-                  : `CARD (${cart.reduce((acc, el) => acc + el.count, 0)})`}
+                  ? `CART (0)`
+                  : `CART (${cart.reduce((acc, el) => acc + el.count, 0)})`}
               </Link>
             </button>
           </span>
