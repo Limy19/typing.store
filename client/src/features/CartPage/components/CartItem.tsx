@@ -21,7 +21,7 @@ function CartItem({ cartItem }: CartItemProps): JSX.Element {
           </h1>
         </div>
         <div className="priceAndDelete">
-          <h1>Цена:{cartItem.Product?.price}</h1>
+          <h1>Цена:{cartItem.Product?.price}$</h1>
 
           <button className="NODecorationButtonCart" type="button" onClick={handleDelete}>
            X
