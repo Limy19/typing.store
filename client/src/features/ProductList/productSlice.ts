@@ -11,6 +11,7 @@ const initialState: State = {
 export const initProductOne = createAsyncThunk('productOne/init', (id: string | undefined) =>
   api.initProductOneFetch(id),
 );
+
 export const initProduct = createAsyncThunk('product/init', (id: string | undefined) =>
   api.initProductFetch(id),
 );

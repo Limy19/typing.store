@@ -18,6 +18,7 @@ function ProductPage(): JSX.Element {
   const product = useSelector((store: RootState) => store.product.product);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  console.log(product, '>>>>>');
 
   useEffect(() => {
     dispatch(initProductOne(productId));
