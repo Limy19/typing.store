@@ -5,4 +5,5 @@ export type State = {
   switch: Product | null;
   keycap: Product | null;
   caseFilter: Record<string, string>;
+  keycapFilter: Record<string, string>;
 };
