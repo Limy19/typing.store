@@ -41,9 +41,15 @@ function ProductCard({ product }: { product: Product }): JSX.Element {
         <div className="product-info">
           <h2 className="h2productCard">{product.name}</h2>
           {isFavorite ? (
-            <FavoriteIcon onClick={() => handleRemoveFromFavorites(product.id)} />
+            <FavoriteIcon
+              style={{ cursor: 'pointer' }}
+              onClick={() => handleRemoveFromFavorites(product.id)}
+            />
           ) : (
-            <FavoriteBorderIcon onClick={() => handleAddToFavorites(product.id)} />
+            <FavoriteBorderIcon
+              style={{ cursor: 'pointer' }}
+              onClick={() => handleAddToFavorites(product.id)}
+            />
           )}
         </div>
         <div className="product-price">

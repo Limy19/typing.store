@@ -60,9 +60,16 @@ function KonsructorPage(): JSX.Element {
   }, []);
 
   return (
-    <div>
-      <div>
-        Выберите кейс: <CasesFilter />
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <h1>Выберите кейс:</h1> <CasesFilter />
+      <div className="Cases">
         {cases.map((c) => (
           <ProductCard
             product={c}
@@ -73,35 +80,53 @@ function KonsructorPage(): JSX.Element {
         ))}
       </div>
       {selectedCase && (
-        <div>
-          Выберите свитчи:
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <h1>Выберите свитчи:</h1>
           <SwitchFilter />{' '}
-          {switches.map((c) => (
-            <ProductCard
-              product={c}
-              key={c.id}
-              onClick={() => dispatch(pickSwitch(c))}
-              active={c.id === selectedSwitches?.id}
-            />
-          ))}
+          <div className="Cases">
+            {switches.map((c) => (
+              <ProductCard
+                product={c}
+                key={c.id}
+                onClick={() => dispatch(pickSwitch(c))}
+                active={c.id === selectedSwitches?.id}
+              />
+            ))}
+          </div>
         </div>
       )}
       {selectedSwitches && (
-        <div>
-          Выберите кейкап:
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <h1>Выберите кейкап:</h1>
           <KeycapsFilter />{' '}
-          {keycaps.map((c) => (
-            <ProductCard
-              product={c}
-              key={c.id}
-              onClick={() => dispatch(pickKeycap(c))}
-              active={c.id === selectedkeycaps?.id}
-            />
-          ))}
+          <div className="Cases">
+            {keycaps.map((c) => (
+              <ProductCard
+                product={c}
+                key={c.id}
+                onClick={() => dispatch(pickKeycap(c))}
+                active={c.id === selectedkeycaps?.id}
+              />
+            ))}
+          </div>
         </div>
       )}
       {selectedCase && selectedSwitches && selectedkeycaps && (
-        <button type="button" onClick={handleClick}>
+        <button className="DecorationButtonByu2" type="button" onClick={handleClick}>
           {' '}
           Добавить в корзину{' '}
         </button>

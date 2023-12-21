@@ -20,7 +20,7 @@ function CasesFilter(): JSX.Element {
     return acc;
   }, [] as string[]);
   return (
-    <div>
+    <div style={{ fontSize: '25px', fontFamily: 'IBM Plex Mono' }}>
       Размер:
       <select
         onChange={(e) => dispatch(changeCaseFilter({ name: 'size', value: e.target.value }))}
@@ -34,6 +34,7 @@ function CasesFilter(): JSX.Element {
           </option>
         ))}
       </select>
+      <br />
       Цвет:
       <select
         onChange={(e) => dispatch(changeCaseFilter({ name: 'color', value: e.target.value }))}
