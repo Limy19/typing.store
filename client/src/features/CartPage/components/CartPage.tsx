@@ -23,7 +23,7 @@ function CartPage(): JSX.Element {
   }, []);
   return (
     <div className="CartPages">
-      {cartItems.length > 0 && (
+      {cartItems.length > 0 ? (
         <>
           <CartItemsList cartItems={cartItems} />
 
@@ -33,6 +33,8 @@ function CartPage(): JSX.Element {
             </button>
           </div>
         </>
+      ) : (
+        <h1 style={{ marginLeft: '25px' }}>Ваша корзина пуста</h1>
       )}
     </div>
   );
