@@ -66,7 +66,7 @@ export const initFevoritesFetch = async (): Promise<Favorite[]> => {
 
 export const addFavoritestFetch = async (id: IdProduct): Promise<Favorite> => {
   const data: Favorite = await (
-    await fetch('/api/favorites', {
+    await fetch(`/api/favorites/${id}`, {
       method: 'POST',
       body: JSON.stringify({ id }),
       headers: {

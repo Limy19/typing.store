@@ -14,19 +14,22 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/:id', async (req, res) => {
   const { id } = req.body;
   try {
+    // console.log(id, '+++++');
     const addLike = await Like.create({
       userId: res.locals.user.id,
       productId: id,
     });
+    // console.log(addLike, '>>>>>');
     const like = await Like.findOne({
       where: { id: addLike.id },
       include: { model: Product, include: { model: PhotoProduct } },
     });
     res.json(like);
   } catch (error) {
+    console.log(error.message, '???????');
     return res.status(500).json({ message: error.message });
   }
 });

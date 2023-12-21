@@ -252,6 +252,30 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          img: '/img/keyboards/SYLPH1.webp',
+          productId: 23,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          img: '/img/keyboards/SYLPH2.webp',
+          productId: 23,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          img: '/img/keyboards/MONSGEEKM2_1.webp',
+          productId: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          img: '/img/keyboards/MONSGEEKM2_2.webp',
+          productId: 24,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

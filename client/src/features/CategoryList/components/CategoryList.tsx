@@ -6,10 +6,11 @@ import CategoryCard from './CategoryCard';
 
 function CategoryList(): JSX.Element {
   const categories = useSelector((store: RootState) => store.category.categories);
-
+  const categor = categories.filter((el) => el.id !== 4);
+  
   return (
     <div>
-      {categories.map((category: Category) => (
+      {categor.map((category: Category) => (
         <CategoryCard category={category} key={category.id} />
       ))}
     </div>
