@@ -18,7 +18,6 @@ const schema = object().shape({
 function LoginForm(): JSX.Element {
   const dispatch = useAppDispatch();
   const { error, user } = useSelector((store: RootState) => store.auth);
-  console.log(user);
 
   const navigate = useNavigate();
 
