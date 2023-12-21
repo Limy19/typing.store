@@ -392,3 +392,12 @@ span {
   width: 600px;
   height: 300px;
 }
+.img {
+  width: 50%;
+  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
