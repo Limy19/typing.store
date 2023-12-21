@@ -7,12 +7,18 @@ function Favorites(): JSX.Element {
   const favorites = useSelector((store: RootState) => store.favorites.favorites);
 
   return (
-    <div>
-      Избранное:
-      {favorites.map((like) => (
-        <ProductCard product={like.Product} />
-      ))}
-    </div>
+    <>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <h1>Избранное:</h1>
+      </div>
+      <div>
+        <div className="favorites">
+          {favorites.map((like) => (
+            <ProductCard product={like.Product} />
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
 

@@ -439,3 +439,11 @@ span {
   justify-content: center;
   align-items: flex-start;
 }
+
+.favorites{
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}

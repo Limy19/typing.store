@@ -33,6 +33,7 @@ function AddProduct(): JSX.Element {
     formData.append('categoryId', categoryId);
 
     void dispatch(addProduct(formData));
+    e.target.reset();
   };
   return (
     <div className="preFoarm">

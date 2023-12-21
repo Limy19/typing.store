@@ -7,15 +7,28 @@ type cartCardProps = {
 
 function CartCardComponents({ cartCard }: cartCardProps): JSX.Element {
   return (
-    <div>
-      <p>Ваш заказ:</p>
-      {cartCard.CartItems?.map((cartitem) => cartitem.Product.name)}
-      {cartCard.CartItems?.map((cartitem) => cartitem.Product.price)}
-      {cartCard.CartItems?.map((cartitem) => (
-        <img key={cartitem.id} src={cartitem.Product?.PhotoProducts?.[0].img} />
-      ))}
-      {/* <p>Цена:{cartCard.Product.price}</p> */}
-      {/* <p>{cartCard.Product.PhotoProducts}</p> */}
+    <div className="cartCardDiv">
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <h1>Ваш заказ:</h1>
+        <p>
+          Наименование: {cartCard.CartItems?.reduce((acc, el) => `${el.Product.name}, ${acc}`, '')}
+        </p>
+        <p> Цена: {cartCard.CartItems?.reduce((acc, el) => el.Product.price + acc, 0)} $</p>
+        <p>
+          {cartCard.CartItems?.map((cartitem) => (
+            <img key={cartitem.id} src={cartitem.Product?.PhotoProducts?.[0].img} />
+          ))}
+        </p>
+        {/* <p>Цена:{cartCard.Product.price}</p> */}
+        {/* <p>{cartCard.Product.PhotoProducts}</p> */}
+      </div>
     </div>
   );
 }
