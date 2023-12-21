@@ -387,3 +387,7 @@ span {
   background-color: black;
   z-index: 9999; /* Можно настроить z-index в зависимости от вашего макета */
 }
+.swiper {
+  width: 600px;
+  height: 300px;
+}
