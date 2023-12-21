@@ -13,10 +13,17 @@ export const initProductFetch = async (id: string | undefined): Promise<Product[
 };
 
 export const deleteProductFetch = async (id: IdProduct): Promise<IdProduct> => {
-  const data: { id: IdProduct } = await (
-    await fetch(`/api/product/${id}`, { method: 'DELETE' })
-  ).json();
-  return data.id;
+  const data: { id: IdProduct } = await await fetch(`/api/product/${id}`, { method: 'DELETE' });
+  console.log(data, '>>>');
+
+  if (!data.ok) {
+    const { message } = await data.json();
+    throw message;
+  }
+  const res: Product = await data.json();
+  console.log(res.id, '+++++');
+
+  return res.id;
 };
 
 export const updateProductFetch = async ({
