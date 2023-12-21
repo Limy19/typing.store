@@ -24,6 +24,12 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: 'KEYS',
+          img: 'https://thekey.company/cdn/shop/files/SwitchesWebsite-10_1024x1024.jpg?v=1685026064',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
