@@ -7,6 +7,7 @@ import App from './App/App';
 import './index.css';
 
 import store from './store/store';
+// eslint-disable-next-line import/order
 import { ThemeProvider, createTheme } from '@mui/material';
 
 const theme = createTheme({
