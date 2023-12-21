@@ -46,8 +46,8 @@ function ProductPage(): JSX.Element {
           {product?.PhotoProducts.map((photo) => (
             <img
               style={{
-                width: '65%',
-                height: '45%',
+                width: '100%',
+                height: '100%',
                 position: 'static',
                 marginBottom: '10px',
                 objectFit: 'cover',
