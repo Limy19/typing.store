@@ -49,7 +49,7 @@ function ProductCard({ product }: { product: Product }): JSX.Element {
         <div className="product-price">
           <h2 className="h2productCard">{product.price}$ </h2>
           <p className="pProductCard">Qty x{product.stock} </p>
-          {!user?.isAdmin && (
+          {!user?.isAdmin && user && (
             <button className="DecorationButtonByu" type="button" onClick={buy}>
               BUY
             </button>
