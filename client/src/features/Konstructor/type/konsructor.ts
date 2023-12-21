@@ -6,4 +6,5 @@ export type State = {
   keycap: Product | null;
   caseFilter: Record<string, string>;
   keycapFilter: Record<string, string>;
+  switchFilter:Record<string, string>;
 };

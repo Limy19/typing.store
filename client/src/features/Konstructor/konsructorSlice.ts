@@ -9,7 +9,8 @@ const initialState: State = {
   switch: null,
   keycap: null,
   caseFilter: {},
-  keycapFilter: {}
+  keycapFilter: {},
+  switchFilter: {},
 };
 
 export const pickCase = createAction<Product>('konsructor/pickCase');
@@ -19,8 +20,15 @@ export const pickKeycap = createAction<Product>('konsructor/pickKeycap');
 export const addToCart = createAsyncThunk('konsructor/addCart', async (products: Product[]) => {
   return Promise.all(products.map((p) => cartapi.addFetch(p.id)));
 });
-export const changeCaseFilter = createAction<{name: string, value:string}>('konsructor/changeCaseFilter')
-export const changeKeycapFilter = createAction<{name: string, value:string}>('konsructor/changeKeycapFilter')
+export const changeCaseFilter = createAction<{ name: string; value: string }>(
+  'konsructor/changeCaseFilter',
+);
+export const changeKeycapFilter = createAction<{ name: string; value: string }>(
+  'konsructor/changeKeycapFilter',
+);
+export const changeSwitchFilter = createAction<{ name: string; value: string }>(
+  'konsructor/changeSwitchFilter',
+);
 
 const konsructorSlice = createSlice({
   name: 'card',
@@ -41,11 +49,16 @@ const konsructorSlice = createSlice({
         state.case = null;
         state.switch = null;
         state.keycap = null;
-      }).addCase(changeCaseFilter, (state, action) =>{
-        state.caseFilter[action.payload.name]= action.payload.value
-      }).addCase(changeKeycapFilter, (state, action) =>{
-        state.keycapFilter[action.payload.name]= action.payload.value
       })
+      .addCase(changeCaseFilter, (state, action) => {
+        state.caseFilter[action.payload.name] = action.payload.value;
+      })
+      .addCase(changeKeycapFilter, (state, action) => {
+        state.keycapFilter[action.payload.name] = action.payload.value;
+      })
+      .addCase(changeSwitchFilter, (state, action) => {
+        state.switchFilter[action.payload.name] = action.payload.value;
+      });
   },
 });
 

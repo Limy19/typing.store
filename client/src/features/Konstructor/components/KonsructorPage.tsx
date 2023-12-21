@@ -6,16 +6,19 @@ import ProductCard from './ProductCard';
 import { addToCart, pickCase, pickKeycap, pickSwitch } from '../konsructorSlice';
 import CasesFilter from './CasesFilter';
 import KeycapsFilter from './KeycapsFilter';
+import SwitchFilter from './SwitchesFilter';
 import { useNavigate } from 'react-router-dom';
 import { load } from '../../CartPage/cartSlice';
+
 function KonsructorPage(): JSX.Element {
   const products = useSelector((store: RootState) => store.product.products ?? []);
   const navigate = useNavigate();
   const casesFilter = useSelector((store: RootState) => store.konsructor.caseFilter);
   const keycapFilter = useSelector((store: RootState) => store.konsructor.keycapFilter);
   console.log(keycapFilter);
+  const switchFilter = useSelector((store: RootState) => store.konsructor.switchFilter);
   const cases = products
-    .filter((p) => p.Category?.name === 'KEYBOARDS')
+    .filter((p) => p.Category?.name === 'KEYS')
     .filter((p) => {
       if ('size' in casesFilter && p.meta?.size !== casesFilter.size) {
         return false;
@@ -25,12 +28,19 @@ function KonsructorPage(): JSX.Element {
       }
       return true;
     });
-  const switches = products.filter((p) => p.Category?.name === 'SWITCHES');
+  const switches = products
+    .filter((p) => p.Category?.name === 'SWITCHES')
+    .filter((p) => {
+      if ('click' in switchFilter && p.meta?.click !== switchFilter.click) {
+        return false;
+      }
+      return true;
+    });
 
   const keycaps = products
     .filter((p) => p.Category?.name === 'KEYCAPS')
     .filter((p) => {
-      if ('color' in keycapFilter && p.meta?.color !== keycapFilter.color) {
+      if ('colorKeycape' in keycapFilter && p.meta?.colorKeycape !== keycapFilter.colorKeycape) {
         return false;
       }
       return true;
@@ -39,10 +49,10 @@ function KonsructorPage(): JSX.Element {
   const selectedSwitches = useSelector((store: RootState) => store.konsructor.switch);
   const selectedkeycaps = useSelector((store: RootState) => store.konsructor.keycap);
   const dispatch = useAppDispatch();
-  const handleClick = () => {
+  const handleClick = async () => {
     if (selectedCase && selectedSwitches && selectedkeycaps) {
-      void dispatch(addToCart([selectedCase, selectedSwitches, selectedkeycaps])),
-        navigate('/cart');
+      await dispatch(addToCart([selectedCase, selectedSwitches, selectedkeycaps]));
+      navigate('/cart');
     }
   };
   useEffect(() => {
@@ -64,7 +74,8 @@ function KonsructorPage(): JSX.Element {
       </div>
       {selectedCase && (
         <div>
-          Выберите свитчи:{' '}
+          Выберите свитчи:
+          <SwitchFilter />{' '}
           {switches.map((c) => (
             <ProductCard
               product={c}

@@ -8,8 +8,8 @@ function KeycapsFilter(): JSX.Element {
   const keycapsFilter = useSelector((store: RootState) => store.konsructor.keycapFilter);
   const dispatch = useAppDispatch();
   const colors = products.reduce((acc, p) => {
-    if (p.meta?.color && !acc.includes(p.meta?.color)) {
-      acc.push(p.meta.color);
+    if (p.meta?.colorKeycape && !acc.includes(p.meta?.colorKeycape)) {
+      acc.push(p.meta.colorKeycape);
     }
     return acc;
   }, [] as string[]);
@@ -18,9 +18,11 @@ function KeycapsFilter(): JSX.Element {
     <div>
       Цвет:
       <select
-        onChange={(e) => dispatch(changeKeycapFilter({ name: 'color', value: e.target.value }))}
-        value={keycapsFilter.color ?? ''}
-        name="color"
+        onChange={(e) =>
+          dispatch(changeKeycapFilter({ name: 'colorKeycape', value: e.target.value }))
+        }
+        value={keycapsFilter.colorKeycape ?? ''}
+        name="colorKeycape"
       >
         <option value="">Выберите цвет</option>
         {colors.map((c) => (
