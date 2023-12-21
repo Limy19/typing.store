@@ -32,6 +32,7 @@ function Repair(): JSX.Element {
   };
   return (
     <div className='preFoarm'>
+      <p>Привет!Здесь ты можешь оставить заявку на ремонт и мы свяжемся с тобой</p>
       <div className='registrationForm'>
         {active && <ModalWindow active={active} setActive={setActive} />}
         <form style={{ minHeight: '395px' }} onSubmit={repairAdd}>

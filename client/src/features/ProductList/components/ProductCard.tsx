@@ -40,7 +40,6 @@ function ProductCard({ product }: { product: Product }): JSX.Element {
       <div className="product-details">
         <div className="product-info">
           <h2 className="h2productCard">{product.name}</h2>
-          <p className="pProductCard">{product.description}</p>
           {isFavorite ? (
             <FavoriteIcon onClick={() => handleRemoveFromFavorites(product.id)} />
           ) : (
