@@ -21,9 +21,11 @@ function CategoryPage(): JSX.Element {
     <div className="productAll">
       {user?.isAdmin && <AddProduct />}
       <div className="productCardMap">
-        {products.map((product) => (
-          <ProductCard product={product} key={product.id} />
-        ))}
+        {products.map((product) =>
+          // console.log(product),
+
+          <ProductCard product={product}  key={product.id} />
+        )}
       </div>
     </div>
   );

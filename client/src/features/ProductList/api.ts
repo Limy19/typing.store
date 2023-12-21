@@ -60,8 +60,13 @@ export const initProductsFetch = async (): Promise<Product[]> => {
 };
 
 export const initFevoritesFetch = async (): Promise<Favorite[]> => {
-  const data: Favorite[] = await (await fetch('/api/favorites')).json();
-  return data;
+  const data: Favorite[] = await await fetch('/api/favorites');
+  if (!data.ok) {
+    const { message } = await data.json();
+    throw message;
+  }
+  const res: Product = await data.json();
+  return res;
 };
 
 export const addFavoritestFetch = async (id: IdProduct): Promise<Favorite> => {
