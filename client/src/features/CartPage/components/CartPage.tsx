@@ -26,10 +26,10 @@ function CartPage(): JSX.Element {
       {cartItems.length > 0 && (
         <>
           <CartItemsList cartItems={cartItems} />
-          
-          <div className='orderButtonDiv'>
+
+          <div className="orderButtonDiv">
             <button className="NODecorationButtonCart2" type="button" onClick={handleChange}>
-              CHECKOUT: {sum}
+              Купить: {sum}
             </button>
           </div>
         </>

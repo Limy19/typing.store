@@ -5,30 +5,44 @@ import { loadProducts } from '../../ProductList/productSlice';
 import ProductCard from './ProductCard';
 import { addToCart, pickCase, pickKeycap, pickSwitch } from '../konsructorSlice';
 import CasesFilter from './CasesFilter';
-
+import KeycapsFilter from './KeycapsFilter';
+import { useNavigate } from 'react-router-dom';
+import { load } from '../../CartPage/cartSlice';
 function KonsructorPage(): JSX.Element {
   const products = useSelector((store: RootState) => store.product.products ?? []);
-  console.log(products);
+  const navigate = useNavigate();
   const casesFilter = useSelector((store: RootState) => store.konsructor.caseFilter);
+  const keycapFilter = useSelector((store: RootState) => store.konsructor.keycapFilter);
+  console.log(keycapFilter);
   const cases = products
     .filter((p) => p.Category?.name === 'KEYBOARDS')
     .filter((p) => {
       if ('size' in casesFilter && p.meta?.size !== casesFilter.size) {
         return false;
       }
+      if ('color' in casesFilter && p.meta?.color !== casesFilter.color) {
+        return false;
+      }
       return true;
     });
   const switches = products.filter((p) => p.Category?.name === 'SWITCHES');
-  console.log(switches, 'MMMMMMMMMMM');
 
-  const keycaps = products.filter((p) => p.Category?.name === 'KEYCAPS');
+  const keycaps = products
+    .filter((p) => p.Category?.name === 'KEYCAPS')
+    .filter((p) => {
+      if ('color' in keycapFilter && p.meta?.color !== keycapFilter.color) {
+        return false;
+      }
+      return true;
+    });
   const selectedCase = useSelector((store: RootState) => store.konsructor.case);
   const selectedSwitches = useSelector((store: RootState) => store.konsructor.switch);
   const selectedkeycaps = useSelector((store: RootState) => store.konsructor.keycap);
   const dispatch = useAppDispatch();
   const handleClick = () => {
     if (selectedCase && selectedSwitches && selectedkeycaps) {
-      void dispatch(addToCart([selectedCase, selectedSwitches, selectedkeycaps]));
+      void dispatch(addToCart([selectedCase, selectedSwitches, selectedkeycaps])),
+        navigate('/cart');
     }
   };
   useEffect(() => {
@@ -63,7 +77,8 @@ function KonsructorPage(): JSX.Element {
       )}
       {selectedSwitches && (
         <div>
-          Выберите кейкап:{' '}
+          Выберите кейкап:
+          <KeycapsFilter />{' '}
           {keycaps.map((c) => (
             <ProductCard
               product={c}

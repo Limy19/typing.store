@@ -13,7 +13,12 @@ function CasesFilter(): JSX.Element {
     }
     return acc;
   }, [] as string[]);
-
+  const colors = products.reduce((acc, p) => {
+    if (p.meta?.color && !acc.includes(p.meta?.color)) {
+      acc.push(p.meta.color);
+    }
+    return acc;
+  }, [] as string[]);
   return (
     <div>
       Размер:
@@ -26,6 +31,19 @@ function CasesFilter(): JSX.Element {
         {sizes.map((s) => (
           <option key={s} value={s}>
             {s}
+          </option>
+        ))}
+      </select>
+      Цвет:
+      <select
+        onChange={(e) => dispatch(changeCaseFilter({ name: 'color', value: e.target.value }))}
+        value={casesFilter.color ?? ''}
+        name="color"
+      >
+        <option value="">Выберите размер</option>
+        {colors.map((c) => (
+          <option key={c} value={c}>
+            {c}
           </option>
         ))}
       </select>
